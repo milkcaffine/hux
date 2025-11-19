@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>HML</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom CSS for the '3 Col Portfolio' Template -->
+    <link href="../css/3-col-portfolio.css" rel="stylesheet">
+
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">   
+$(document).ready( function() {
+
+$("#headers").load("../header.html");
+    $("#footers").load("../footer.html");  
+
+});
+</script>
+    
+</head>
+
+    <body>
+        <div id="headers"></div>
+      
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+    </nav>
+
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-lg-12">
+          <h1 class="page-header">;) <small><small><small>2025-11-20</br></small></small></small></h1>
+        </div>
+
+      </div>
+
+      <div class="row">
+      <div>
+      <p>
+        <img src="../images/20251120.jpg"></br>
+        <img src="../images/20251120_1.jpg"></br>
+        <img src="../images/20251120_2.jpg"></br>
+        최근 메루까리나 옥션에서 킨들4를 연속으로 몇개 줏었는데..</br>
+        그중에 하나를 만지다가 벽돌로 만들어버림-_-</br>
+        흔히하는방법인 전원버튼 40초누르기, 전원+홈버튼 20초 누르기 기타등등..</br>
+        꿈쩍도안해서 이것저것 검색하다가 이거결국 시리얼포트로 가야하나하고 뒷판도 뜯었지만 귀찮..</br>
+        아서 다시 검색해보다가 이상하게 해결됨..</br>
+        다시 벽돌만들었을때 참고하려고 매모남김.</br>
+        https://github.com/yifanlu/Fastboot-Kindle</br>
+        이걸 설치한다. 맥터미널에서 설치:</br>
+        git clone https://github.com/yifanlu/Fastboot-Kindle.git</br>
+        cd Fastboot-Kindle</br>
+        여기서 main으로 설치하면 에러가 날것임</br>
+        fastboot.c를 열어서 fb_queue_check(argv[1]); 를 // fb_queue_check(argv[1]);   // 최신 AOSP에서 삭제된 함수 이렇게? 주석처리한다</br>
+        ./fastboot reboot 이걸로 보통은 해결이 될텐데 나는 아무런 반응이 없어서</br>
+        ./fastboot setvar bootmode main 이렇게 부팅모드를 메인으로 설정후 다시 리붓하니 재부팅됨..</br>
+        리붓을해도 diags화면으로 리붓하는 루프에 빠져서 반응이 없었던거같다. -_- </br>
+        이외 참고한 페이지:
+        https://www.reddit.com/r/kindle/comments/15p57f6/classic_kindle_recovery_info/
+        <img src="../images/20251120_3.jpg"></br>
+        https://wiki.postmarketos.org/wiki/Amazon_Kindle_4_(amazon-yoshi)
+        <img src="../images/20251120_4.jpg"></br>
+        </br>
+
+        
+      </p>
+      </div>
+      </div>
+      <hr>
+
+      <div class="row text-center">
+        
+        <div class="col-lg-12">
+          <ul class="pagination">
+            <li><a href="#">&laquo;</a></li>
+            <li class="active"><a href="https://milkcaffine.github.io/hux/index.html">back</a></li>
+            <li><a href="#">&raquo;</a></li>
+          </ul>        
+        </div>
+
+      </div>
+
+    </div><!-- /.container -->
+
+    <div class="container">
+
+      <hr>
+
+      <footer>
+        <div class="row">
+          <div class="col-lg-12">
+            <p>Copyright &copy; mindsoap.net / sherlock.kr  <span id="getCurrentDate"></span></p>
+          </div>
+        </div>
+      </footer>
+      
+    </div><!-- /.container -->
+
+    <!-- JavaScript -->
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script type="text/javascript">
+      var dt = new Date();
+      document.getElementById('getCurrentDate').innerHTML = dt.getFullYear();
+    </script>
+  </body>
+
+</html>
