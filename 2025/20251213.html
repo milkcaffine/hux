@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>HML</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom CSS for the '3 Col Portfolio' Template -->
+    <link href="../css/3-col-portfolio.css" rel="stylesheet">
+
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">   
+$(document).ready( function() {
+
+$("#headers").load("../header.html");
+    $("#footers").load("../footer.html");  
+
+});
+</script>
+    
+</head>
+
+    <body>
+        <div id="headers"></div>
+      
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+    </nav>
+
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-lg-12">
+          <h1 class="page-header">;) <small><small><small>2025-11-20</br></small></small></small></h1>
+        </div>
+
+      </div>
+
+      <div class="row">
+      <div>
+      <p>
+        <img src="../images/20251213.jpg"></br>
+        <img src="../images/20251213_1.jpg"></br>
+        <img src="../images/20251213_2.jpg"></br>
+        <img src="../images/20251213_3.jpg"></br>
+        <img src="../images/20251213_4.jpg"></br>
+        <img src="../images/20251213_5.jpg"></br>
+        <img src="../images/20251213_6.jpg"></br>
+      </br>
+        Raspberry Pi 프로젝트!!;;</br>
+        파이5 16기가엔 삼바+ollama,openweb ui넣어서 돌리고</br>
+        nextcloud를 올리려고하다가,</br>
+        이것을 외부에서 접속할 경우를 생각해서</br>
+        다른 파이로 만드는게 좋겠다고 생각을함.</br>
+        그래서 메루까리를 검색해보니 마침 파이4B+ 4G가 괜찮은 가격에 나와있길래 그거랑,</br>
+        커다란 팬이랑, ssd 확장보드를 삼.</br>
+        받아서 sd카드에 설치해서 보드테스트해보고 나머지 부품받아서 조립하고,</br>
+        ssd에 이미지설치했다가 nextcould이미지 다시 깔았다가 ssd부팅하려니 잘안되길래 </br>
+        다시 ssd에 기본 라파os깔고 nextcloud를 거기다가 설치함.</br>
+        이거 해보니까, 삼바는 보존된 자료 열람용으로 괜찮은데,</br>
+        nextcloud는 기본의 dropbox나 google drive랑 거의 비슷한 방식으로 쓸수있어서,</br>
+        집안내의 기기들끼리 파일주고받고 하는데 최적의 성능 속도도 빠름!</br>
+        일단 집안에서만 사용해도 아주 만족스러운 결과라서 심심하면 외부에 연결할듯.</br>
+        도메인에 연결하거나해서 게인홈페이지 같은것도 가능할거같은데 깃허브같은데서 잘쓰고있어서 굳이?</br>
+      </br>
+        그거말고 가장 재미있었던건 Koreader에서도 Webdab로 nextcloud에 접속이 가능하다는 점이었음.</br>
+        이건 정말 편리한듯 책파일듯 옮기거나 여러기기에서 (나는 킨들이가...다른이북리거나...아주많아서 아무기기나 들고 책보려면 이거중요.)</br>
+        평소엔 파일옮기는데 dropbox를 사용했는데 이제 이걸로하면될듯.</br>
+      </br>
+        폰에서 nextcloud,samba파일들 다 볼수있어서 완전편해짐 ㅋㅋ</br>
+        재미로 시작한건데 진짜 꽤 쓸만하네..</br>
+        그리고 라파5, 4 둘다 평소엔 45도 정도로 시원~ 하게 아무 무리없이 잘돌아가고..</br>
+        다만 파이5에서 인공지능 한번 돌리면 급 cpu 99.9퍼 찍고 팬돌아가고 난리인데,</br>
+        생각보다 대답이 빨리나옴.</br>
+        ㅋㅋㅋ calibre에 연결하면 편하다던데 내 캘리버는 정리가 1도 안되어잇기때문에</br>
+        삼바에 달아놓은 외장하드도그렇고 일단 정리가 필요할듯 -_-</br>
+        ..;;;</br>
+      </p>
+      </div>
+      </div>
+      <hr>
+
+      <div class="row text-center">
+        
+        <div class="col-lg-12">
+          <ul class="pagination">
+            <li><a href="#">&laquo;</a></li>
+            <li class="active"><a href="https://milkcaffine.github.io/hux/index.html">back</a></li>
+            <li><a href="#">&raquo;</a></li>
+          </ul>        
+        </div>
+
+      </div>
+
+    </div><!-- /.container -->
+
+    <div class="container">
+
+      <hr>
+
+      <footer>
+        <div class="row">
+          <div class="col-lg-12">
+            <p>Copyright &copy; mindsoap.net / sherlock.kr  <span id="getCurrentDate"></span></p>
+          </div>
+        </div>
+      </footer>
+      
+    </div><!-- /.container -->
+
+    <!-- JavaScript -->
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script type="text/javascript">
+      var dt = new Date();
+      document.getElementById('getCurrentDate').innerHTML = dt.getFullYear();
+    </script>
+  </body>
+
+</html>
