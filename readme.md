@@ -1,5 +1,13 @@
-## Project Description
+# hux
 
-* [live example](https://learning-zone.github.io/website-templates/3-col-portfolio)
+Static archive for [mindsoap.net](https://mindsoap.net/).
 
-![alt text](https://github.com/learning-zone/website-templates/blob/master/assets/3-col-portfolio.png "3-col-portfolio.png")
+GitHub Pages on `main` deploys this repo. `CNAME` is `mindsoap.net`. `www` is intentionally not configured.
+
+## Add a post
+
+1. Put images in `images/`.
+2. Add `YYYY/YYYY-MM-DD.html`. Copy an existing post and keep asset URLs root-relative (`/css/...`, `/js/...`, `/images/...`).
+3. Add a card on the matching year index (`index.html`, `index2024.html`, `index2025.html`).
+
+Internal links should stay root-relative (`/about.html`), not `milkcaffine.github.io`.
