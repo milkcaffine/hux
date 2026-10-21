@@ -1,11 +1,95 @@
+/* Hux / mindsoap.net custom styles */
 body {
-	margin-top: 50px; /* 50px is the height of the navbar - change this if the navbarn height changes */
+  margin-top: 60px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: #f8f9fa;
+  color: #212529;
+  transition: background 0.2s, color 0.2s;
+}
+
+.page-header {
+  border-bottom: 1px solid #dee2e6;
+  margin-bottom: 2rem;
+  padding-bottom: 0.5rem;
 }
 
 .portfolio-item {
-	margin-bottom: 25px;
+  margin-bottom: 2rem;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.portfolio-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.portfolio-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.portfolio-item h3 {
+  font-size: 1.15rem;
+  margin: 0.75rem 1rem 0.25rem;
+  font-weight: 600;
+}
+
+.portfolio-item p {
+  margin: 0 1rem 1rem;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.badge-category {
+  display: inline-block;
+  background: #e9ecef;
+  color: #495057;
+  font-size: 0.7rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 12px;
+  margin-right: 0.4rem;
+  text-transform: lowercase;
+}
+
+navbar, .navbar {
+  border: none;
 }
 
 footer {
-	margin: 50px 0;
+  margin: 3rem 0 2rem;
+  color: #6c757d;
+  font-size: 0.85rem;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #121212;
+    color: #e9ecef;
+  }
+  .portfolio-item {
+    background: #1e1e1e;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  }
+  .portfolio-item:hover {
+    box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+  }
+  .portfolio-item p {
+    color: #adb5bd;
+  }
+  .page-header {
+    border-bottom-color: #333;
+  }
+  .badge-category {
+    background: #333;
+    color: #ced4da;
+  }
+  footer {
+    color: #adb5bd;
+  }
 }
