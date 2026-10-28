@@ -13,16 +13,13 @@
 
     <!-- Custom CSS for the '3 Col Portfolio' Template -->
     <link href="/css/3-col-portfolio.css" rel="stylesheet">
-<script src="/js/jquery-1.10.2.js"></script>
-<script type="text/javascript">   
-$(document).ready( function() {
-
-$("#headers").load("/header.html");
-    $("#footers").load("/footer.html");  
-
-});
-</script>
-    
+    <script src="/js/jquery-1.10.2.js"></script>
+    <script>
+      $(function () {
+        $("#headers").load("/header.html");
+        $("#footers").load("/footer.html");
+      });
+    </script>
 </head>
 
     <body>
@@ -33,17 +30,17 @@ $("#headers").load("/header.html");
       <div class="row">
 
         <div class="col-lg-12">
-          <h1 class="page-header">mindsoap.net <small><small><small>2024-05-23</br></small></small></small></h1>
+          <h1 class="page-header">mindsoap.net <small>2024-05-23</small></h1>
         </div>
 
       </div>
 
       <div class="row">
-      <div>
+      <div class="post">
       <p>
         
-        <img src="/images/2024-05-23-01.jpg"></br>
-        <br/>
+        <img src="/images/2024-05-23-01.jpg"><br>
+        <br>
         4살쯤에서부처 고등학교진학전까지
         피아노를 계속 배웠는데 그땐 동네 피아노학원에서 그저 피아노 후두려패는 느낌으로,
         오래하다보니 배토벤 쇼팽정도까지 두들기다가 그만두니
@@ -75,27 +72,17 @@ $("#headers").load("/header.html");
         맥북에도 꽂으니 바로연결되고
         아이패드에도 카메라 어뎁터로 연결하니 바로연결됨
         
-        옼ㅋㅋ</br>
-        이걸 왜 이제삿지싶다</br>
+        옼ㅋㅋ<br>
+        이걸 왜 이제삿지싶다<br>
         
         
-        <img src="/images/2024-05-23-02.jpg"></br>
+        <img src="/images/2024-05-23-02.jpg"><br>
         
       </p>
       </div>
       </div>
-      <hr>
-
-      <div class="row text-center">
-        
-        <div class="col-lg-12">
-          <ul class="pagination">
-            <li><a href="#">&laquo;</a></li>
-            <li class="active"><a href="/index.html">back</a></li>
-            <li><a href="#">&raquo;</a></li>
-          </ul>        
-        </div>
-
+      <div class="row text-center year-nav-row">
+        <div id="footers"></div>
       </div>
 
     </div><!-- /.container -->
@@ -113,13 +100,9 @@ $("#headers").load("/header.html");
       </footer>
       
     </div><!-- /.container -->
-
-    <!-- JavaScript -->
-    <script src="/js/jquery-1.10.2.js"></script>
     <script src="/js/bootstrap.js"></script>
-    <script type="text/javascript">
-      var dt = new Date();
-      document.getElementById('getCurrentDate').innerHTML = dt.getFullYear();
+    <script>
+      document.getElementById("getCurrentDate").textContent = new Date().getFullYear();
     </script>
   </body>
 

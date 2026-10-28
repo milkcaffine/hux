@@ -10,13 +10,13 @@
 
     <link href="/css/bootstrap.css" rel="stylesheet">
     <link href="/css/3-col-portfolio.css" rel="stylesheet">
-<script src="/js/jquery-1.10.2.js"></script>
-<script type="text/javascript">
-$(document).ready( function() {
-$("#headers").load("/header.html");
-    $("#footers").load("/footer.html");
-});
-</script>
+    <script src="/js/jquery-1.10.2.js"></script>
+    <script>
+      $(function () {
+        $("#headers").load("/header.html");
+        $("#footers").load("/footer.html");
+      });
+    </script>
 </head>
 <body>
         <div id="headers"></div>
@@ -28,20 +28,19 @@ $("#headers").load("/header.html");
       </div>
  <div class="row">
               <div class="col-md-4 portfolio-item">
-          <a href="2026/20261004.html"><img class="img-responsive" src="/images/2026-10-04.jpg">
+          <a href="2026/2026-10-04.html"><img class="img-responsive" src="/images/2026-10-04.jpg">
           <h3>접히는 렌즈와 O-ring</h3>
           <p><span class="badge-category">photo</span> FED는 링, Konishiroku와 Serena는 그냥 — 2026-10-04</p>
           </a>
          </div>
               <div class="col-md-4 portfolio-item">
-          <a href="2026/20260106.html"><img class="img-responsive" src="/images/2026-01-06.jpg">
+          <a href="2026/2026-01-06.html"><img class="img-responsive" src="/images/2026-01-06.jpg">
           <h3>iPod Classic 6th mod</h3>
           <p><span class="badge-category">tech</span> Larger (&gt; 128GB) flashmods — 2026-01-06</p>
          </div>
         </div>
-      <hr>
-      <div class="row text-center">
-<div id="footers"></div>
+      <div class="row text-center year-nav-row">
+        <div id="footers"></div>
       </div>
     </div>
     <div class="container">
@@ -55,9 +54,8 @@ $("#headers").load("/header.html");
       </footer>
     </div>
     <script src="/js/bootstrap.js"></script>
-    <script type="text/javascript">
-      var dt = new Date();
-      document.getElementById('getCurrentDate').innerHTML = dt.getFullYear();
+    <script>
+      document.getElementById("getCurrentDate").textContent = new Date().getFullYear();
     </script>
   </body>
 </html>

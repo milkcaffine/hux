@@ -13,16 +13,13 @@
 
     <!-- Custom CSS for the '3 Col Portfolio' Template -->
     <link href="/css/3-col-portfolio.css" rel="stylesheet">
-<script src="/js/jquery-1.10.2.js"></script>
-<script type="text/javascript">   
-$(document).ready( function() {
-
-$("#headers").load("/header.html");
-    $("#footers").load("/footer.html");  
-
-});
-</script>
-    
+    <script src="/js/jquery-1.10.2.js"></script>
+    <script>
+      $(function () {
+        $("#headers").load("/header.html");
+        $("#footers").load("/footer.html");
+      });
+    </script>
 </head>
 
     <body>
@@ -33,44 +30,34 @@ $("#headers").load("/header.html");
       <div class="row">
 
         <div class="col-lg-12">
-          <h1 class="page-header">mindsoap.net <small><small><small>2024-05-21</br></small></small></small></h1>
+          <h1 class="page-header">mindsoap.net <small>2024-05-21</small></h1>
         </div>
 
       </div>
 
       <div class="row">
-      <div>
+      <div class="post">
       <p>
         
-        <img src="/images/2024-05-21-01.jpg"></br>
-        이 귀여운 녀석은 다름아닌 모기향이다. </br>모기향에 돼지모양이라니 난데없다고 생각했는데,
+        <img src="/images/2024-05-21-01.jpg"><br>
+        이 귀여운 녀석은 다름아닌 모기향이다. <br>모기향에 돼지모양이라니 난데없다고 생각했는데,
         나름 일본에서 오래전부터 사용해오던 도자기 모양의 모기향 거치대? 
         같은녀석에서 유래된 돼지인거 같은데,
         도자기쪽이 아주 탐이났지만, 공동주택에서 모기향을 피울 수는 없는고로
-        전기 모기향을 구입함.</br>
-        <img src="/images/2024-05-21-02.jpg"></br>
-        나름 고층에 살고있어서 모기라곤 일년에 한두마리 볼까 했는데, 올해가 이상하게 모기가 대량발생중인건지,</br>
+        전기 모기향을 구입함.<br>
+        <img src="/images/2024-05-21-02.jpg"><br>
+        나름 고층에 살고있어서 모기라곤 일년에 한두마리 볼까 했는데, 올해가 이상하게 모기가 대량발생중인건지,<br>
         건물 외장공사로 벽에 이것저것 설치되어있어서 그걸 타고 많이 올라오는건진 알 수가 없는데,
-        모기놈들 일일히 때려잡다가 너무 귀찮아서 모기향의 힘을 빌려보고자 사봤다.</br>
-        <img src="/images/2024-05-21-03.jpg"></br>
-        별 생각없이 사고나니 용액이 180일분인데..</br>
+        모기놈들 일일히 때려잡다가 너무 귀찮아서 모기향의 힘을 빌려보고자 사봤다.<br>
+        <img src="/images/2024-05-21-03.jpg"><br>
+        별 생각없이 사고나니 용액이 180일분인데..<br>
         내년까지 쓰겠는데..?
         
       </p>
       </div>
       </div>
-      <hr>
-
-      <div class="row text-center">
-        
-        <div class="col-lg-12">
-          <ul class="pagination">
-            <li><a href="#">&laquo;</a></li>
-            <li class="active"><a href="/index.html">back</a></li>
-            <li><a href="#">&raquo;</a></li>
-          </ul>        
-        </div>
-
+      <div class="row text-center year-nav-row">
+        <div id="footers"></div>
       </div>
 
     </div><!-- /.container -->
@@ -88,13 +75,9 @@ $("#headers").load("/header.html");
       </footer>
       
     </div><!-- /.container -->
-
-    <!-- JavaScript -->
-    <script src="/js/jquery-1.10.2.js"></script>
     <script src="/js/bootstrap.js"></script>
-    <script type="text/javascript">
-      var dt = new Date();
-      document.getElementById('getCurrentDate').innerHTML = dt.getFullYear();
+    <script>
+      document.getElementById("getCurrentDate").textContent = new Date().getFullYear();
     </script>
   </body>
 

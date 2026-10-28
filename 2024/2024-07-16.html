@@ -13,16 +13,13 @@
 
     <!-- Custom CSS for the '3 Col Portfolio' Template -->
     <link href="/css/3-col-portfolio.css" rel="stylesheet">
-<script src="/js/jquery-1.10.2.js"></script>
-<script type="text/javascript">   
-$(document).ready( function() {
-
-$("#headers").load("/header.html");
-    $("#footers").load("/footer.html");  
-
-});
-</script>
-    
+    <script src="/js/jquery-1.10.2.js"></script>
+    <script>
+      $(function () {
+        $("#headers").load("/header.html");
+        $("#footers").load("/footer.html");
+      });
+    </script>
 </head>
 
     <body>
@@ -33,49 +30,39 @@ $("#headers").load("/header.html");
       <div class="row">
 
         <div class="col-lg-12">
-          <h1 class="page-header">mindsoap.net <small><small><small>2024-07-16</br></small></small></small></h1>
+          <h1 class="page-header">mindsoap.net <small>2024-07-16</small></h1>
         </div>
 
       </div>
 
       <div class="row">
-      <div>
+      <div class="post">
       <p>
-        내 6년정도된 나름 게임용？ 노트북이 있는데, 이게 한 작년말부터 니 하드 고장남 얼른 고쳐라</br>
-        이런 메시지를 띄우기 시작했음.</br>
-        이게 또 이러다가 괜찮다가 잊을만 하면 나오기도 하고 그러길래</br>
-        무시하고 있다가, 맥북에어를 사고, 그래도 윈도우도 쓸일이 있으니까 생각만 하고</br>
-        최근에 다시 사진 스캔할 일이 생길때까지 잊고 있었는데.</br>
-        또 니 하드 고장났으니 고쳐라고 라고 하길래</br>
-        이러다 다 날아가면 곤란하지 싶어서 아마존 세일기간동안 ssd를 하나 구입함.</br>
-        <img src="/images/2024-07-16.jpg"></br>
-        하드만 사서 될일은 아니고, 케이스도 사서 연결하고,마이그레이션이라고하나,</br>
-        하드 복제해서 켜보니 아무일 없었던 듯이 잘되는구만. 예전에 일반하드를 ssd로 교체하는 작업은 몇번 한적 있었는데,</br>
-        그때는 삼성에서 제공하는 프로그램을 이용했었는데, 이번엔 그냥 무료프로그램을 다운받아서 했는데도 </br>
-        잘 된것 같네.</br>
-        <img src="/images/2024-07-16-01.jpg"></br>
-        예전부터 기본하드 용량이 128이라 항상 부족함에 시달리고 있어서 바꾸고 싶은 생각..만 했었는데</br>
-        결국 6년만에 고장나고 나서야 512로 업그레이드 함 </br>
-        <img src="/images/2024-07-16-02.jpg"></br>
+        내 6년정도된 나름 게임용？ 노트북이 있는데, 이게 한 작년말부터 니 하드 고장남 얼른 고쳐라<br>
+        이런 메시지를 띄우기 시작했음.<br>
+        이게 또 이러다가 괜찮다가 잊을만 하면 나오기도 하고 그러길래<br>
+        무시하고 있다가, 맥북에어를 사고, 그래도 윈도우도 쓸일이 있으니까 생각만 하고<br>
+        최근에 다시 사진 스캔할 일이 생길때까지 잊고 있었는데.<br>
+        또 니 하드 고장났으니 고쳐라고 라고 하길래<br>
+        이러다 다 날아가면 곤란하지 싶어서 아마존 세일기간동안 ssd를 하나 구입함.<br>
+        <img src="/images/2024-07-16.jpg"><br>
+        하드만 사서 될일은 아니고, 케이스도 사서 연결하고,마이그레이션이라고하나,<br>
+        하드 복제해서 켜보니 아무일 없었던 듯이 잘되는구만. 예전에 일반하드를 ssd로 교체하는 작업은 몇번 한적 있었는데,<br>
+        그때는 삼성에서 제공하는 프로그램을 이용했었는데, 이번엔 그냥 무료프로그램을 다운받아서 했는데도 <br>
+        잘 된것 같네.<br>
+        <img src="/images/2024-07-16-01.jpg"><br>
+        예전부터 기본하드 용량이 128이라 항상 부족함에 시달리고 있어서 바꾸고 싶은 생각..만 했었는데<br>
+        결국 6년만에 고장나고 나서야 512로 업그레이드 함 <br>
+        <img src="/images/2024-07-16-02.jpg"><br>
         
-        <br/>
+        <br>
         
 
       </p>
       </div>
       </div>
-      <hr>
-
-      <div class="row text-center">
-        
-        <div class="col-lg-12">
-          <ul class="pagination">
-            <li><a href="#">&laquo;</a></li>
-            <li class="active"><a href="/index.html">back</a></li>
-            <li><a href="#">&raquo;</a></li>
-          </ul>        
-        </div>
-
+      <div class="row text-center year-nav-row">
+        <div id="footers"></div>
       </div>
 
     </div><!-- /.container -->
@@ -93,13 +80,9 @@ $("#headers").load("/header.html");
       </footer>
       
     </div><!-- /.container -->
-
-    <!-- JavaScript -->
-    <script src="/js/jquery-1.10.2.js"></script>
     <script src="/js/bootstrap.js"></script>
-    <script type="text/javascript">
-      var dt = new Date();
-      document.getElementById('getCurrentDate').innerHTML = dt.getFullYear();
+    <script>
+      document.getElementById("getCurrentDate").textContent = new Date().getFullYear();
     </script>
   </body>
 

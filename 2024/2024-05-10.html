@@ -13,16 +13,13 @@
 
     <!-- Custom CSS for the '3 Col Portfolio' Template -->
     <link href="/css/3-col-portfolio.css" rel="stylesheet">
-<script src="/js/jquery-1.10.2.js"></script>
-<script type="text/javascript">   
-$(document).ready( function() {
-
-$("#headers").load("/header.html");
-    $("#footers").load("/footer.html");  
-
-});
-</script>
-    
+    <script src="/js/jquery-1.10.2.js"></script>
+    <script>
+      $(function () {
+        $("#headers").load("/header.html");
+        $("#footers").load("/footer.html");
+      });
+    </script>
 </head>
 
     <body>
@@ -33,40 +30,30 @@ $("#headers").load("/header.html");
       <div class="row">
 
         <div class="col-lg-12">
-          <h1 class="page-header">mindsoap.net <small><small><small>2024-05-10</br></small></small></small></h1>
+          <h1 class="page-header">mindsoap.net <small>2024-05-10</small></h1>
         </div>
 
       </div>
 
       <div class="row">
-      <div>
+      <div class="post">
       <p>
       흠. 뭔가 백만년만에 html찍어서 홈페이지 만드는거 같은데. 이쪽이 훨씬 재미있긴하지.
       딱히 특별할만한건 없고, 최근에 맥북에어를 샀는데, 이쪽이 아이패드보다 사람을 뭔가 하게 만드는건 확실한 것같다.
       최근 다시 그림을 그리려고 끄적거리고있고, 가벼우니 그냥 들고 이렇게 홈페이지 끄적거리기라거나,
       음악들으면서 영상보면서 하기도 편하고. 게임에 관련된 일을 하긴하지만 노트북으로는 거의 0에가깝게 하니까
       딱맞는 물건이 아닌가 싶은데.
-      </br>
+      <br>
       어쨋든 내가 오죽 심심했으면 다시 이렇게 옛날 취미 뒤적거리는건지 아니면 그냥 생산성이 높아지고 있는 건지는 모르겠다.
-      </br> 
+      <br> 
       둘다 일본어 키보드인데 이건 오타 안나는데 회사걸로 치면 대략 오타쟁이가 되버린다.
       조금씩 건드려서 뭔가 업데이트하거나, 아니면 그냥 명함, 엑스, 인스타, 포트폴리오? 등을 연결해두는 그런용도로 쓸거같다.
       아무도 안볼거같으니 이렇게 낙서할수도있음
       </p>
       </div>
       </div>
-      <hr>
-
-      <div class="row text-center">
-        
-        <div class="col-lg-12">
-          <ul class="pagination">
-            <li><a href="#">&laquo;</a></li>
-            <li class="active"><a href="/index.html">back</a></li>
-            <li><a href="#">&raquo;</a></li>
-          </ul>        
-        </div>
-
+      <div class="row text-center year-nav-row">
+        <div id="footers"></div>
       </div>
 
     </div><!-- /.container -->
@@ -84,13 +71,9 @@ $("#headers").load("/header.html");
       </footer>
       
     </div><!-- /.container -->
-
-    <!-- JavaScript -->
-    <script src="/js/jquery-1.10.2.js"></script>
     <script src="/js/bootstrap.js"></script>
-    <script type="text/javascript">
-      var dt = new Date();
-      document.getElementById('getCurrentDate').innerHTML = dt.getFullYear();
+    <script>
+      document.getElementById("getCurrentDate").textContent = new Date().getFullYear();
     </script>
   </body>
 

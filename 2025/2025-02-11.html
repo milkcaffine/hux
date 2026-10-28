@@ -13,16 +13,13 @@
 
     <!-- Custom CSS for the '3 Col Portfolio' Template -->
     <link href="/css/3-col-portfolio.css" rel="stylesheet">
-<script src="/js/jquery-1.10.2.js"></script>
-<script type="text/javascript">   
-$(document).ready( function() {
-
-$("#headers").load("/header.html");
-    $("#footers").load("/footer.html");  
-
-});
-</script>
-    
+    <script src="/js/jquery-1.10.2.js"></script>
+    <script>
+      $(function () {
+        $("#headers").load("/header.html");
+        $("#footers").load("/footer.html");
+      });
+    </script>
 </head>
 
     <body>
@@ -33,28 +30,25 @@ $("#headers").load("/header.html");
       <div class="row">
 
         <div class="col-lg-12">
-          <h1 class="page-header">mindsoap.net <small><small><small>2025-02-15</br></small></small></small></h1>
+          <h1 class="page-header">mindsoap.net <small>2025-02-15</small></h1>
         </div>
 
       </div>
 
       <div class="row">
-      <div>
+      <div class="post">
       <p>
-        <img src="/images/2025-02-11.jpg"></br>
+        <img src="/images/2025-02-11.jpg"><br>
 
-         <img src="/images/2025-02-11-01.jpg"></br>
-        어. 이거 꽤 오래전에 샀던건데,</br>
-        배터리가 부풀어서 저절로 뚜따됨</br>
-        나도 몰랐는데 시계가 열려서 팔에서 덜렁거리고 있더라고</br>
-        나중에 만져보려하니 선이 빠진건지 터치도 안됨.</br>
-        하지만 배터리불량으로 긴자매장에서 리퍼품으로 교환,</br>
-        애매하기 무료교환 기간은 지나서 돈내고삼</br>
-        매장직원이, 배터리교환으로 리퍼품구매가능하면 사는게 이득,</br>
-        아니면 그냥 새거사라고 했었는데, 원래 마음에 들던 모델이라 괜찮은듯</br>
-
-
-
+         <img src="/images/2025-02-11-01.jpg"><br>
+        어. 이거 꽤 오래전에 샀던건데,<br>
+        배터리가 부풀어서 저절로 뚜따됨<br>
+        나도 몰랐는데 시계가 열려서 팔에서 덜렁거리고 있더라고<br>
+        나중에 만져보려하니 선이 빠진건지 터치도 안됨.<br>
+        하지만 배터리불량으로 긴자매장에서 리퍼품으로 교환,<br>
+        애매하기 무료교환 기간은 지나서 돈내고삼<br>
+        매장직원이, 배터리교환으로 리퍼품구매가능하면 사는게 이득,<br>
+        아니면 그냥 새거사라고 했었는데, 원래 마음에 들던 모델이라 괜찮은듯<br>
 
   
         
@@ -62,18 +56,8 @@ $("#headers").load("/header.html");
       </p>
       </div>
       </div>
-      <hr>
-
-      <div class="row text-center">
-        
-        <div class="col-lg-12">
-          <ul class="pagination">
-            <li><a href="#">&laquo;</a></li>
-            <li class="active"><a href="/index.html">back</a></li>
-            <li><a href="#">&raquo;</a></li>
-          </ul>        
-        </div>
-
+      <div class="row text-center year-nav-row">
+        <div id="footers"></div>
       </div>
 
     </div><!-- /.container -->
@@ -91,13 +75,9 @@ $("#headers").load("/header.html");
       </footer>
       
     </div><!-- /.container -->
-
-    <!-- JavaScript -->
-    <script src="/js/jquery-1.10.2.js"></script>
     <script src="/js/bootstrap.js"></script>
-    <script type="text/javascript">
-      var dt = new Date();
-      document.getElementById('getCurrentDate').innerHTML = dt.getFullYear();
+    <script>
+      document.getElementById("getCurrentDate").textContent = new Date().getFullYear();
     </script>
   </body>
 
