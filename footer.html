@@ -5,20 +5,4 @@
             <a href="/index2025.html" data-year="2025">2025</a>
             <a href="/index.html" data-year="2026">2026</a>
           </nav>
-          <script>
-            (function () {
-              var path = location.pathname || "";
-              var year = "2026";
-              if (/index2025|\/2025\//.test(path)) year = "2025";
-              else if (/index2024|\/2024\//.test(path)) year = "2024";
-              else if (/\/2026\//.test(path)) year = "2026";
-              var links = document.querySelectorAll(".year-nav a[data-year]");
-              for (var i = 0; i < links.length; i++) {
-                if (links[i].getAttribute("data-year") === year) {
-                  links[i].className += (links[i].className ? " " : "") + "is-active";
-                  links[i].setAttribute("aria-current", "page");
-                }
-              }
-            })();
-          </script>
         </div>

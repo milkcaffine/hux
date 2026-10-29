@@ -10,13 +10,15 @@
 
     <link href="/css/bootstrap.css" rel="stylesheet">
     <link href="/css/3-col-portfolio.css" rel="stylesheet">
-    <script src="/js/jquery-1.10.2.js"></script>
-    <script>
-      $(function () {
-        $("#headers").load("/header.html");
-        $("#footers").load("/footer.html");
-      });
-    </script>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <meta property="og:site_name" content="mindsoap">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="mindsoap">
+    <meta property="og:description" content="mindsoap.net — personal archive">
+    <meta property="og:url" content="https://mindsoap.net/">
+    <meta property="og:image" content="https://mindsoap.net/images/2026-10-29.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <script src="/js/site.js" defer></script>
 </head>
 <body>
         <div id="headers"></div>
@@ -28,21 +30,22 @@
       </div>
  <div class="row">
               <div class="col-md-4 portfolio-item">
-          <a href="2026/2026-10-29.html"><img class="img-responsive" src="/images/2026-10-29.jpg">
+          <a href="2026/2026-10-29.html"><img alt="구독형 인공지능의 판도?" class="img-responsive" src="/images/2026-10-29.jpg">
           <h3>구독형 인공지능의 판도?</h3>
           <p><span class="badge-category">tech</span> Gemini·Grok·Cursor, 그리고 다시 손대기 시작한 사이트들 — 2026-10-29</p>
           </a>
          </div>
               <div class="col-md-4 portfolio-item">
-          <a href="2026/2026-10-04.html"><img class="img-responsive" src="/images/2026-10-04.jpg">
+          <a href="2026/2026-10-04.html"><img alt="접히는 렌즈와 O-ring" class="img-responsive" src="/images/2026-10-04.jpg">
           <h3>접히는 렌즈와 O-ring</h3>
           <p><span class="badge-category">photo</span> FED는 링, Konishiroku와 Serena는 그냥 — 2026-10-04</p>
           </a>
          </div>
               <div class="col-md-4 portfolio-item">
-          <a href="2026/2026-01-06.html"><img class="img-responsive" src="/images/2026-01-06.jpg">
+          <a href="2026/2026-01-06.html"><img alt="iPod Classic 6th mod" class="img-responsive" src="/images/2026-01-06.jpg">
           <h3>iPod Classic 6th mod</h3>
           <p><span class="badge-category">tech</span> Larger (&gt; 128GB) flashmods — 2026-01-06</p>
+          </a>
          </div>
         </div>
       <div class="row text-center year-nav-row">
@@ -59,7 +62,6 @@
         </div>
       </footer>
     </div>
-    <script src="/js/bootstrap.js"></script>
     <script>
       document.getElementById("getCurrentDate").textContent = new Date().getFullYear();
     </script>
