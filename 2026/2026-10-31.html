@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="에이전트 프로그래밍과 다시 꺼낸 라즈베리 파이 피코 W 고양이 로봇">
+    <meta name="author" content="HML">
+    <title>피코 W와 고양이 로봇 — mindsoap</title>
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/3-col-portfolio.css" rel="stylesheet">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <meta property="og:site_name" content="mindsoap">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="피코 W와 고양이 로봇 — mindsoap">
+    <meta property="og:description" content="에이전트 프로그래밍과 다시 꺼낸 라즈베리 파이 피코 W 고양이 로봇">
+    <meta property="og:url" content="https://mindsoap.net/2026/2026-10-31.html">
+    <meta property="og:image" content="https://mindsoap.net/images/2026-10-31.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <script src="/js/site.js" defer></script>
+</head>
+    <body>
+        <div id="headers"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h1 class="page-header">피코 W와 고양이 로봇 <small>2026-10-31</small></h1>
+        </div>
+      </div>
+      <div class="row">
+      <div class="post">
+      <p>
+        <img src="/images/2026-10-31.jpg" alt="초음파 센서와 도트 매트릭스 LED 표정이 켜진 라즈베리 파이 피코 W 두 발 고양이 로봇"><br>
+        에이전트 프로그래밍을 이것저것 만지작거리면서 깃페이지 갱신부터 손대기 시작했는데,<br>
+        문득 집 어딘가에서 굴러다니던 라즈베리 파이 피코 W(Raspberry Pi Pico W) 로봇이 생각났다.<br>
+        예전에 바이페달 로봇 장난감 삼아 사서 아두이노로 코드 올리고 놀다가 한동안 방치해 뒀던 녀석.<br>
+        <br>
+        상자에서 먼지 털고 꺼내서, 요즘 쓰는 코딩 에이전트한테 코드랑 핀 구조를 던져주고 봐달라고 부탁해 봤다.<br>
+        그런데 하드웨어 구조를 생각보다 굉장히 잘 인식하고 알아듣는다.<br>
+        <br>
+        <img src="/images/2026-10-31-02.jpg" alt="서보 모터 배선과 전원 LED가 켜진 라즈베리 파이 피코 W 쉴드 보드 상단"><br>
+        피코 W의 Wi-Fi 기능을 이용해서 맥이나 아이폰 브라우저에서 바로 조작할 수 있는 리모콘까지 뚝딱 만들어줬다.<br>
+        걸음걸이나 인사하는 동작, 다양한 새로운 모션을 구현하는 것도 코드 몇 줄 던지면 바로바로 나와서 꽤 신기했음.<br>
+        예전엔 라이브러리 뒤지고 통신 프로토콜 맞추느라 머리 싸맸을 텐데, 참 세상 편해졌다.<br>
+        <br>
+        하지만 소프트웨어가 아무리 똑똑해져도, 두 발 고양이 로봇 자체의 물리적 한계는 어쩔 수 없었다.<br>
+        발바닥 접지 면적이 워낙 좁은 데다가, 온갖 잡동사니와 전선으로 가득한 장애물 투성이 우리 집 바닥에서는<br>
+        몇 걸음 제대로 못 걷고 자꾸 픽픽 넘어진다. ㅋㅋ<br>
+        자이로 보정이고 뭐고 거실의 장애물 지옥 앞에서는 속수무책.<br>
+        <br>
+        바퀴 달린 녀석이나 4족 보행 로봇 같은 다른 형태도 새로 만들어보고 싶긴 한데,<br>
+        최근 들어 마이크로컨트롤러 보드 값도 많이 올랐고 원하는 부품을 제때 구하기도 영 힘들다.<br>
+        <br>
+        아쉽지만 다른 로봇 욕심은 일단 접어두고, 그냥 이 뒤뚱거리는 고양이 녀석으로 만족해야겠다.<br>
+        넘어지면 손으로 일으켜 세워주며 노는 것도 나름 귀여우니까.<br>
+      </p>
+      </div>
+      </div>
+      <div class="row text-center year-nav-row">
+        <div id="footers"></div>
+      </div>
+    </div>
+    <div class="container">
+      <hr>
+      <footer>
+        <div class="row">
+          <div class="col-lg-12">
+            <p>Copyright &copy; mindsoap.net  <span id="getCurrentDate"></span></p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script>
+      document.getElementById("getCurrentDate").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
