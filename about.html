@@ -1,174 +1,56 @@
 <!DOCTYPE html>
-<html lang="ko" class="dark scroll-smooth">
+<html lang="ko">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About — mindsoap · sherlock.kr</title>
-  <meta name="description" content="About HML / mindsoap.net / sherlock.kr" />
-  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About mindsoap.net">
+  <meta name="author" content="HML">
+  <title>About — mindsoap</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <meta property="og:site_name" content="mindsoap / sherlock.kr">
-  <meta property="og:title" content="About — mindsoap · sherlock.kr">
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
-  
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Pretendard', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
-            mono: ['"Fira Code"', 'monospace'],
-          },
-          colors: {
-            brand: {
-              500: '#3b82f6',
-              glow: '#38bdf8'
-            },
-            surface: {
-              900: '#090d16',
-              850: '#0f1422',
-              800: '#151c2e',
-              border: 'rgba(255, 255, 255, 0.08)'
-            }
-          }
-        }
-      }
-    }
-  </script>
-
-  <style>
-    body {
-      background-color: #080b12;
-      color: #e2e8f0;
-      font-family: 'Pretendard', sans-serif;
-      background-image: 
-        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(56, 189, 248, 0.12), transparent);
-      background-attachment: fixed;
-    }
-    .bento-card {
-      background: linear-gradient(135deg, rgba(21, 28, 46, 0.75) 0%, rgba(15, 20, 34, 0.85) 100%);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.07);
-    }
-  </style>
+  <meta property="og:site_name" content="mindsoap">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="About — mindsoap">
+  <meta property="og:description" content="About mindsoap.net">
+  <meta property="og:url" content="https://mindsoap.net/about.html">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="/css/mindsoap.css">
 </head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <a class="brand" href="/">mindsoap</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="https://marsko.art" target="_blank" rel="noopener noreferrer">marsko</a>
+        <a href="https://davidbowie.kr" target="_blank" rel="noopener noreferrer">dolls</a>
+      </nav>
+    </header>
 
-<body class="min-h-screen text-slate-200 antialiased flex flex-col justify-between">
+    <article class="prose">
+      <h1>about</h1>
+      <p>Personal archive of notes, photos, and small experiments.</p>
+      <p>
+        <strong>drawing</strong>
+        Fine art background. Traditional painting, 2D/3D, and occasional returns to drawing.
+      </p>
+      <p>
+        <strong>writing</strong>
+        Poetry and horror fragments. Sometimes longer pieces.
+        (<a href="https://marsko.art" target="_blank" rel="noopener noreferrer">marsko.art</a>)
+      </p>
+      <p>
+        <strong>hobbies</strong>
+        Film cameras (vintage lenses preferred), headphones &amp; IEMs, e-readers, language study, doll collecting, and assorted tech tinkering.
+      </p>
+      <p>Domains: mindsoap.net / mindsoap.com / sherlock.kr / sherlock.co.kr</p>
+    </article>
 
-  <!-- Header -->
-  <header class="sticky top-0 z-50 backdrop-blur-xl bg-surface-900/80 border-b border-surface-border">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2.5">
-        <div class="w-8 h-8 rounded-lg bg-sky-500 flex items-center justify-center font-mono font-bold text-white text-sm">
-          S
-        </div>
-        <span class="font-mono font-bold tracking-tight text-white hover:text-sky-400 transition">mindsoap · sherlock.kr</span>
-      </a>
-      <a href="/" class="text-xs font-mono text-slate-400 hover:text-white px-3 py-1.5 rounded-lg border border-white/5 hover:bg-white/5 transition flex items-center gap-1.5">
-        <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> Back to Archive
-      </a>
-    </div>
-  </header>
-
-  <!-- Main Profile -->
-  <main class="max-w-4xl mx-auto px-4 sm:px-6 py-12 w-full">
-    
-    <div class="bento-card rounded-3xl p-6 sm:p-10 mb-8">
-      
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-8 border-b border-white/10">
-        <div>
-          <div class="flex items-center gap-2 mb-2">
-            <span class="px-2.5 py-0.5 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20 text-xs font-mono">
-              Curator · Tinkerer · Artist
-            </span>
-            <span class="text-xs font-mono text-slate-400">꧁( ꒪⌓꒪)꧂</span>
-          </div>
-          <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">HML</h1>
-          <p class="text-sm font-mono text-slate-400 mt-1">mindsoap.net · sherlock.kr</p>
-        </div>
-
-        <div class="text-left sm:text-right font-mono text-xs text-slate-400 space-y-1">
-          <div><span class="text-slate-500">Domains:</span> mindsoap.net / sherlock.kr</div>
-          <div><span class="text-slate-500">Related:</span> mindsoap.com / sherlock.co.kr</div>
-        </div>
-      </div>
-
-      <!-- Categories & Pillars -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-        
-        <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/5">
-          <div class="flex items-center gap-2 text-sky-400 font-bold mb-3 text-sm">
-            <i data-lucide="cpu" class="w-4 h-4"></i> Hardware, Pi & Robotics
-          </div>
-          <ul class="text-xs text-slate-300 space-y-2 leading-relaxed">
-            <li>• <strong>Raspberry Pi Ecosystem</strong>: Pi 5 16GB, Pi 4B+, SSD HAT, Samba NAS, Local Ollama AI, Nextcloud</li>
-            <li>• <strong>Robotics & Microcontrollers</strong>: Raspberry Pi Pico W Bipedal Robot kit</li>
-            <li>• <strong>iPod Flashmods & Mods</strong>: 5.5th / 6th / 7th SSD swap, &gt;128GB flashmods, Franken iPod</li>
-            <li>• <strong>3D Printing</strong>: Bambu Lab A1 mini로 부품 및 베젤 모델링/출력</li>
-          </ul>
-        </div>
-
-        <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/5">
-          <div class="flex items-center gap-2 text-indigo-400 font-bold mb-3 text-sm">
-            <i data-lucide="book-open" class="w-4 h-4"></i> E-Readers & Jailbreak
-          </div>
-          <ul class="text-xs text-slate-300 space-y-2 leading-relaxed">
-            <li>• <strong>Kindle Fleet</strong>: Oasis 1st, 2nd, Scribe, Kindle 2, Kindle 3 Keyboard, Kindle 4, Paperwhite 1/10</li>
-            <li>• <strong>Jailbreak & Unbricking</strong>: winterbreak, KUAL, KOReader, DO_FACTORY_RESTORE, fastboot diagnostics</li>
-            <li>• <strong>Portable E-Ink</strong>: Kobo Libra Colour, Mars & Febble</li>
-          </ul>
-        </div>
-
-        <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/5">
-          <div class="flex items-center gap-2 text-amber-400 font-bold mb-3 text-sm">
-            <i data-lucide="camera" class="w-4 h-4"></i> Sound & Optics
-          </div>
-          <ul class="text-xs text-slate-300 space-y-2 leading-relaxed">
-            <li>• <strong>Sound & Audio</strong>: Sony WH-1000XM5/XM6, B&W, Bose, Shure, Wired IEMs, Portable DAC/DAPs</li>
-            <li>• <strong>Film Cameras & Vintage Lenses</strong>: 침동식 렌즈, FED 링, Konishiroku, Serena 빈티지 광학</li>
-          </ul>
-        </div>
-
-        <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/5">
-          <div class="flex items-center gap-2 text-purple-400 font-bold mb-3 text-sm">
-            <i data-lucide="palette" class="w-4 h-4"></i> Fine Art & Writing
-          </div>
-          <ul class="text-xs text-slate-300 space-y-2 leading-relaxed">
-            <li>• <strong>Drawing & Fine Art</strong>: Traditional painting, 2D/3D, occasional returns to drawing</li>
-            <li>• <strong>Writing</strong>: Poetry and horror fragments, longer pieces (<a href="https://marsko.art" target="_blank" rel="noopener noreferrer" class="text-sky-400 underline">marsko.art</a>)</li>
-            <li>• <strong>Stationery & Analogue</strong>: 몽블랑(Montblanc) & Bock 닙 만년필 커스텀, 카키모리(Kakimori) 딥펜</li>
-          </ul>
-        </div>
-
-      </div>
-
-      <div class="mt-8 pt-6 border-t border-white/10 flex items-center justify-between">
-        <span class="text-xs font-mono text-slate-500">Updated: 2026</span>
-        <a href="/" class="text-xs font-mono text-sky-400 hover:underline flex items-center gap-1">
-          Explore Archive &rarr;
-        </a>
-      </div>
-
-    </div>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="border-t border-surface-border py-8 text-center text-xs font-mono text-slate-500">
-    &copy; 2026 mindsoap.net / sherlock.kr. All rights reserved.
-  </footer>
-
+    <footer class="foot">
+      mindsoap.net · <a href="/about.html">about</a> · <span id="y"></span>
+    </footer>
+  </div>
   <script>
-    if (window.lucide) {
-      lucide.createIcons();
-    }
+    document.getElementById("y").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
