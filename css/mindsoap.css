@@ -91,6 +91,7 @@ a:hover {
 /* year groups */
 .year {
   margin: 0 0 2rem;
+  scroll-margin-top: 1.5rem;
 }
 
 .year-label {
