@@ -1,75 +1,854 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="dark scroll-smooth">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="mindsoap.net — personal archive">
-    <meta name="author" content="HML">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mindsoap · sherlock.kr — HML Archive & Workshop</title>
+  <meta name="description" content="라즈베리 파이, 피코 W 로봇, 킨들 탈옥, 아이팟 SSD 개조, 3D 프린팅, 만년필, 유선 음향을 기록하는 개인 아카이브" />
+  
+  <!-- Favicon / Meta -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:site_name" content="mindsoap / sherlock.kr">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="mindsoap · sherlock.kr">
+  <meta property="og:description" content="HML 개인 아카이브 & 하드웨어 워크샵">
+  <meta property="og:url" content="https://mindsoap.net/">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS & Lucide Icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Pretendard', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+            mono: ['"Fira Code"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#f4f6fb',
+              500: '#3b82f6',
+              glow: '#38bdf8'
+            },
+            surface: {
+              900: '#090d16',
+              850: '#0f1422',
+              800: '#151c2e',
+              700: '#1f293d',
+              border: 'rgba(255, 255, 255, 0.08)',
+            }
+          }
+        }
+      }
+    }
+  </script>
 
-    <title>mindsoap</title>
-
-    <link href="/css/bootstrap.css" rel="stylesheet">
-    <link href="/css/3-col-portfolio.css" rel="stylesheet">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <meta property="og:site_name" content="mindsoap">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="mindsoap">
-    <meta property="og:description" content="mindsoap.net — personal archive">
-    <meta property="og:url" content="https://mindsoap.net/">
-    <meta property="og:image" content="https://mindsoap.net/images/2026-10-31.jpg">
-    <meta name="twitter:card" content="summary_large_image">
-    <script src="/js/site.js" defer></script>
+  <style>
+    body {
+      background-color: #080b12;
+      color: #e2e8f0;
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      background-image: 
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(56, 189, 248, 0.12), transparent),
+        radial-gradient(circle 600px at 100% 20%, rgba(99, 102, 241, 0.08), transparent);
+      background-attachment: fixed;
+    }
+    .bento-card {
+      background: linear-gradient(135deg, rgba(21, 28, 46, 0.75) 0%, rgba(15, 20, 34, 0.85) 100%);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .bento-card:hover {
+      border-color: rgba(56, 189, 248, 0.35);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px -10px rgba(56, 189, 248, 0.15);
+    }
+    .tag-badge {
+      font-family: '"Fira Code"', monospace;
+      font-size: 0.72rem;
+      letter-spacing: -0.02em;
+    }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #080b12; }
+    ::-webkit-scrollbar-thumb { background: #1f293d; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
+  </style>
 </head>
-<body>
-        <div id="headers"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-           <h1 class="page-header">mindsoap <small>archive</small></h1>
+
+<body class="min-h-screen text-slate-200 antialiased selection:bg-sky-500 selection:text-white">
+
+  <!-- Top Navigation Header -->
+  <header class="sticky top-0 z-50 backdrop-blur-xl bg-surface-900/80 border-b border-surface-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Brand Logo / Domain -->
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center font-mono font-bold text-white shadow-lg shadow-sky-500/20 group-hover:scale-105 transition">
+          S
         </div>
-      </div>
- <div class="row">
-              <div class="col-md-4 portfolio-item">
-          <a href="2026/2026-10-31.html"><img alt="피코 W와 고양이 로봇" class="img-responsive" src="/images/2026-10-31.jpg">
-          <h3>피코 W와 고양이 로봇</h3>
-          <p><span class="badge-category">tech</span> 에이전트와 다시 꺼낸 피코 W 로봇, 그리고 집안 장애물 — 2026-10-31</p>
-          </a>
-         </div>
-              <div class="col-md-4 portfolio-item">
-          <a href="2026/2026-10-29.html"><img alt="구독형 인공지능의 판도?" class="img-responsive" src="/images/2026-10-29.jpg">
-          <h3>구독형 인공지능의 판도?</h3>
-          <p><span class="badge-category">tech</span> Gemini·Grok·Cursor, 그리고 다시 손대기 시작한 사이트들 — 2026-10-29</p>
-          </a>
-         </div>
-              <div class="col-md-4 portfolio-item">
-          <a href="2026/2026-10-04.html"><img alt="접히는 렌즈와 O-ring" class="img-responsive" src="/images/2026-10-04.jpg">
-          <h3>접히는 렌즈와 O-ring</h3>
-          <p><span class="badge-category">photo</span> FED는 링, Konishiroku와 Serena는 그냥 — 2026-10-04</p>
-          </a>
-         </div>
-              <div class="col-md-4 portfolio-item">
-          <a href="2026/2026-01-06.html"><img alt="iPod Classic 6th mod" class="img-responsive" src="/images/2026-01-06.jpg">
-          <h3>iPod Classic 6th mod</h3>
-          <p><span class="badge-category">tech</span> Larger (&gt; 128GB) flashmods — 2026-01-06</p>
-          </a>
-         </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-mono font-bold tracking-tight text-white group-hover:text-sky-400 transition text-base">sherlock.kr</span>
+            <span class="text-xs text-slate-500 font-mono">/ mindsoap</span>
+            <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-sky-500/10 text-sky-400 border border-sky-500/20">HML</span>
+          </div>
+          <p class="text-[11px] text-slate-400 font-mono tracking-tight hidden sm:block">Robotics · Raspberry Pi · e-ink · mods</p>
         </div>
-      <div class="row text-center year-nav-row">
-        <div id="footers"></div>
-      </div>
+      </a>
+
+      <!-- Quick Links & Actions -->
+      <nav class="flex items-center gap-2 sm:gap-4">
+        <a href="#bento" class="text-xs font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-lg hover:bg-white/5 transition hidden md:block">
+          Overview
+        </a>
+        <a href="#archive" class="text-xs font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-lg hover:bg-white/5 transition">
+          Logs & Archive
+        </a>
+        <a href="/about.html" class="text-xs font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-lg hover:bg-white/5 transition">
+          About
+        </a>
+        <a href="/art.html" class="text-xs font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-lg hover:bg-white/5 transition hidden sm:block">
+          Art
+        </a>
+        <a href="https://github.com/milkcaffine/hux" target="_blank" rel="noopener" class="text-xs font-mono text-slate-400 hover:text-white p-2 rounded-lg hover:bg-white/5 transition flex items-center gap-1.5 border border-white/5">
+          <i data-lucide="github" class="w-4 h-4"></i>
+          <span class="hidden sm:inline">GitHub</span>
+        </a>
+      </nav>
+
     </div>
-    <div class="container">
-      <hr>
-      <footer>
-        <div class="row">
-          <div class="col-lg-12">
-            <p>Copyright &copy; mindsoap.net  <span id="getCurrentDate"></span></p>
+  </header>
+
+  <!-- Hero & Bento Grid Section -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20">
+
+    <!-- Hero Intro -->
+    <section class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-surface-border pb-8">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono mb-4">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          mindsoap.net / sherlock.kr archive
+        </div>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
+          The Cabinet of a <br class="hidden sm:inline" />
+          <span class="bg-gradient-to-r from-sky-400 via-indigo-300 to-amber-200 bg-clip-text text-transparent">Tech & Analog Tinkerer</span>
+        </h1>
+        <p class="mt-3 text-slate-400 text-sm sm:text-base max-w-2xl leading-relaxed">
+          피코 W 이족보행 로봇, 라즈베리 파이 5 로컬 AI, 킨들 탈옥, 아이팟 SSD 개조, 3D 프린팅과 필름 렌즈를 기록하는 개인 연구실입니다.
+        </p>
+      </div>
+
+      <!-- Quick Stat Counter -->
+      <div class="flex items-center gap-6 bg-surface-850/60 border border-surface-border p-4 rounded-2xl backdrop-blur-sm self-start md:self-auto">
+        <div>
+          <div class="text-2xl font-mono font-bold text-white" id="stat-count">36+</div>
+          <div class="text-[11px] text-slate-400 font-mono uppercase tracking-wider">Total Logs</div>
+        </div>
+        <div class="w-px h-8 bg-surface-border"></div>
+        <div>
+          <div class="text-2xl font-mono font-bold text-sky-400">2026</div>
+          <div class="text-[11px] text-slate-400 font-mono uppercase tracking-wider">Latest Year</div>
+        </div>
+        <div class="w-px h-8 bg-surface-border"></div>
+        <div>
+          <div class="text-lg font-mono text-amber-300">꧁( ꒪⌓꒪)꧂</div>
+          <div class="text-[11px] text-slate-400 font-mono uppercase tracking-wider">Status</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bento Grid Showcase -->
+    <section id="bento" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-16">
+      
+      <!-- Bento 1: Latest 2026 Post (Large 2 cols, 2 rows on desktop) -->
+      <a href="2026/2026-10-31.html" class="bento-card group rounded-3xl p-6 md:col-span-2 lg:col-span-2 flex flex-col justify-between relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-surface-900 via-surface-900/40 to-transparent z-10 pointer-events-none"></div>
+        <img src="/images/2026-10-31.jpg" alt="Pico W Robot" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 group-hover:opacity-50 transition duration-500 ease-out" />
+        
+        <div class="relative z-20 flex justify-between items-start">
+          <span class="tag-badge px-2.5 py-1 rounded-full bg-sky-500/20 text-sky-300 border border-sky-400/30 flex items-center gap-1.5 backdrop-blur-md">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Latest Log (Today)
+          </span>
+          <span class="text-xs font-mono text-slate-300 bg-black/40 px-2 py-0.5 rounded backdrop-blur-md">2026-10-31</span>
+        </div>
+
+        <div class="relative z-20 mt-32">
+          <h3 class="text-2xl font-bold text-white group-hover:text-sky-300 transition flex items-center gap-2">
+            피코 W와 고양이 로봇
+            <i data-lucide="arrow-up-right" class="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition"></i>
+          </h3>
+          <p class="text-sm text-slate-300 mt-2 line-clamp-2 leading-relaxed">
+            에이전트와 함께 다시 꺼낸 라즈베리 파이 피코 W 기반 이족보행 로봇, 그리고 집안 장애물 극복 이야기.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-1.5">
+            <span class="tag-badge px-2 py-0.5 rounded bg-white/10 text-slate-200">#RaspberryPiPicoW</span>
+            <span class="tag-badge px-2 py-0.5 rounded bg-white/10 text-slate-200">#Robotics</span>
+            <span class="tag-badge px-2 py-0.5 rounded bg-white/10 text-slate-200">#HardwareMod</span>
           </div>
         </div>
-      </footer>
+      </a>
+
+      <!-- Bento 2: AI Landscape 2026 (1 col) -->
+      <a href="2026/2026-10-29.html" class="bento-card group rounded-3xl p-5 flex flex-col justify-between relative overflow-hidden">
+        <div class="flex items-center justify-between">
+          <span class="tag-badge px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
+            Tech & AI
+          </span>
+          <i data-lucide="cpu" class="w-4 h-4 text-slate-400 group-hover:text-indigo-400 transition"></i>
+        </div>
+        <div class="my-3">
+          <div class="w-full h-28 rounded-xl overflow-hidden mb-3 relative bg-slate-900 border border-white/5">
+            <img src="/images/2026-10-29.jpg" alt="Subscription AI" class="w-full h-full object-cover group-hover:scale-105 transition" />
+          </div>
+          <h4 class="font-bold text-white text-base group-hover:text-indigo-300 transition">구독형 인공지능의 판도?</h4>
+          <p class="text-xs text-slate-400 mt-1 line-clamp-2">Gemini · Grok · Cursor, 그리고 다시 손대기 시작한 웹사이트들.</p>
+        </div>
+        <div class="text-[11px] font-mono text-slate-500 flex items-center justify-between">
+          <span>2026-10-29</span>
+          <span class="text-indigo-400 font-sans group-hover:translate-x-0.5 transition">Read log &rarr;</span>
+        </div>
+      </a>
+
+      <!-- Bento 3: Workbench Arsenal (1 col) -->
+      <div class="bento-card rounded-3xl p-5 flex flex-col justify-between bg-surface-850">
+        <div class="flex items-center justify-between">
+          <span class="tag-badge px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
+            Lab Specs
+          </span>
+          <i data-lucide="layers" class="w-4 h-4 text-emerald-400"></i>
+        </div>
+
+        <ul class="my-3 space-y-2 text-xs">
+          <li class="flex items-center justify-between p-1.5 rounded-xl bg-white/[0.03] border border-white/[0.04]">
+            <span class="text-slate-300">Pico W Robot Kit</span>
+            <span class="font-mono text-[10px] text-sky-400">Pico W</span>
+          </li>
+          <li class="flex items-center justify-between p-1.5 rounded-xl bg-white/[0.03] border border-white/[0.04]">
+            <span class="text-slate-300">Raspberry Pi 5 16G</span>
+            <span class="font-mono text-[10px] text-amber-400">Ollama/NAS</span>
+          </li>
+          <li class="flex items-center justify-between p-1.5 rounded-xl bg-white/[0.03] border border-white/[0.04]">
+            <span class="text-slate-300">Bambu Lab A1 mini</span>
+            <span class="font-mono text-[10px] text-emerald-400">3D Print</span>
+          </li>
+          <li class="flex items-center justify-between p-1.5 rounded-xl bg-white/[0.03] border border-white/[0.04]">
+            <span class="text-slate-300">Kindle Oasis / 2 / 4</span>
+            <span class="font-mono text-[10px] text-purple-400">E-Ink</span>
+          </li>
+        </ul>
+
+        <div class="text-[11px] font-mono text-slate-500">
+          Curated by HML
+        </div>
+      </div>
+
+      <!-- Bento 4: iPod Classic SSD & Flashmod (1 col) -->
+      <a href="2026/2026-01-06.html" class="bento-card group rounded-3xl p-5 flex flex-col justify-between">
+        <div class="flex items-center justify-between">
+          <span class="tag-badge px-2 py-0.5 rounded-full bg-sky-500/10 text-sky-300 border border-sky-500/20">
+            Hardware Mod
+          </span>
+          <i data-lucide="disc" class="w-4 h-4 text-sky-400"></i>
+        </div>
+        <div class="my-3">
+          <h4 class="font-mono font-bold text-white text-sm group-hover:text-sky-300 transition">iPod Classic 6th/7th Mod</h4>
+          <p class="text-xs text-slate-400 mt-1 line-clamp-3 leading-relaxed">
+            Larger (&gt;128GB) flashmods, SSD 스왑과 투명 하우징, 프랭켄 아이팟 빌드 기록.
+          </p>
+        </div>
+        <div class="flex items-center justify-between text-[11px] font-mono text-slate-500">
+          <span>2026-01-06</span>
+          <span class="text-sky-400">&rarr;</span>
+        </div>
+      </a>
+
+      <!-- Bento 5: Vintage Lens & Cameras (1 col) -->
+      <a href="2026/2026-10-04.html" class="bento-card group rounded-3xl p-5 flex flex-col justify-between">
+        <div class="flex items-center justify-between">
+          <span class="tag-badge px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/20">
+            Optics
+          </span>
+          <i data-lucide="camera" class="w-4 h-4 text-amber-400"></i>
+        </div>
+        <div class="my-3">
+          <h4 class="font-bold text-white text-sm group-hover:text-amber-300 transition">접히는 렌즈와 O-ring</h4>
+          <p class="text-xs text-slate-400 mt-1 line-clamp-3 leading-relaxed">
+            침동식 렌즈, FED 링과 Konishiroku, Serena 클래식 광학 렌즈 마운트.
+          </p>
+        </div>
+        <div class="flex items-center justify-between text-[11px] font-mono text-slate-500">
+          <span>2026-10-04</span>
+          <span class="text-amber-400">&rarr;</span>
+        </div>
+      </a>
+
+      <!-- Bento 6: Persona & Vibe (2 cols on desktop) -->
+      <div class="bento-card rounded-3xl p-5 md:col-span-2 flex flex-col justify-between">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="tag-badge px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
+              Identity
+            </span>
+            <span class="text-xs font-mono text-slate-400">Ambivert · ENTJ / INTJ</span>
+          </div>
+          <span class="text-base">☕</span>
+        </div>
+        <div class="my-3">
+          <p class="text-sm text-slate-300 leading-relaxed">
+            "상황에 따라 내향적인 모습과 외향적인 모습을 모두 갖는 앰비버트. 
+            그림 그리기, 시와 호러 스토리, 전자책 단말기, 인이어, 필름 카메라, 외국어를 만지작거립니다."
+          </p>
+        </div>
+        <div class="flex items-center justify-between pt-2 border-t border-white/5 text-xs text-slate-400 font-mono">
+          <span>mindsoap.net · sherlock.kr</span>
+          <a href="/about.html" class="text-sky-400 hover:underline">Full Profile &rarr;</a>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Main Archive Directory Section -->
+    <section id="archive" class="pt-6">
+      
+      <!-- Section Header & Filters -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+        <div>
+          <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+            <i data-lucide="archive" class="w-6 h-6 text-sky-400"></i>
+            Log Archive
+          </h2>
+          <p class="text-xs text-slate-400 mt-1">2024~2026년 하드웨어 개조, 라즈베리 파이, 로보틱스, 오디오 기록</p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap items-center gap-1.5 p-1 bg-surface-850 border border-surface-border rounded-2xl" id="filter-container">
+          <button class="filter-btn px-3 py-1.5 rounded-xl text-xs font-medium bg-sky-500 text-white shadow-sm transition" data-filter="all">
+            All (<span id="count-all">0</span>)
+          </button>
+          <button class="filter-btn px-3 py-1.5 rounded-xl text-xs font-medium text-slate-400 hover:text-white hover:bg-white/5 transition" data-filter="2026">
+            2026
+          </button>
+          <button class="filter-btn px-3 py-1.5 rounded-xl text-xs font-medium text-slate-400 hover:text-white hover:bg-white/5 transition" data-filter="2025">
+            2025
+          </button>
+          <button class="filter-btn px-3 py-1.5 rounded-xl text-xs font-medium text-slate-400 hover:text-white hover:bg-white/5 transition" data-filter="2024">
+            2024
+          </button>
+          <button class="filter-btn px-3 py-1.5 rounded-xl text-xs font-medium text-slate-400 hover:text-white hover:bg-white/5 transition" data-filter="tech">
+            Tech & Pi
+          </button>
+          <button class="filter-btn px-3 py-1.5 rounded-xl text-xs font-medium text-slate-400 hover:text-white hover:bg-white/5 transition" data-filter="e-reader">
+            Kindle & E-Ink
+          </button>
+          <button class="filter-btn px-3 py-1.5 rounded-xl text-xs font-medium text-slate-400 hover:text-white hover:bg-white/5 transition" data-filter="audio">
+            Audio & iPod
+          </button>
+        </div>
+      </div>
+
+      <!-- Articles Grid -->
+      <div id="posts-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <!-- Rendered dynamically by JavaScript -->
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Modern Clean Footer -->
+  <footer class="border-t border-surface-border bg-surface-900/60 backdrop-blur-md py-12 text-slate-400 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <div class="flex items-center gap-3">
+        <div class="w-7 h-7 rounded-lg bg-surface-800 border border-surface-border flex items-center justify-center font-mono font-bold text-sky-400 text-sm">
+          S
+        </div>
+        <div>
+          <div class="font-mono text-slate-300 font-semibold">sherlock.kr · mindsoap.net</div>
+          <div class="text-[11px] text-slate-500">personal workshop & digital archive</div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-6 font-mono text-[11px]">
+        <a href="/about.html" class="hover:text-white transition">About</a>
+        <a href="/art.html" class="hover:text-white transition">Art & Drawing</a>
+        <a href="/index2025.html" class="hover:text-white transition">2025 Archive</a>
+        <a href="/index2024.html" class="hover:text-white transition">2024 Archive</a>
+        <a href="https://github.com/milkcaffine/hux" target="_blank" rel="noopener" class="hover:text-white transition">GitHub</a>
+      </div>
+
+      <div class="text-[11px] font-mono text-slate-500">
+        &copy; <span id="year">2026</span> mindsoap.net / sherlock.kr
+      </div>
+      
     </div>
-    <script>
-      document.getElementById("getCurrentDate").textContent = new Date().getFullYear();
-    </script>
-  </body>
+  </footer>
+
+  <!-- Posts Data & Controller Script -->
+  <script>
+    const POSTS = [
+      // 2026 Posts
+      {
+        year: '2026',
+        date: '2026-10-31',
+        title: '피코 W와 고양이 로봇',
+        summary: '에이전트와 다시 꺼낸 피코 W 로봇, 그리고 집안 장애물.',
+        image: '/images/2026-10-31.jpg',
+        url: '2026/2026-10-31.html',
+        category: ['tech', 'robotics'],
+        tag: 'Tech · Robotics'
+      },
+      {
+        year: '2026',
+        date: '2026-10-29',
+        title: '구독형 인공지능의 판도?',
+        summary: 'Gemini · Grok · Cursor, 그리고 다시 손대기 시작한 사이트들.',
+        image: '/images/2026-10-29.jpg',
+        url: '2026/2026-10-29.html',
+        category: ['tech', 'ai'],
+        tag: 'Tech · AI'
+      },
+      {
+        year: '2026',
+        date: '2026-10-04',
+        title: '접히는 렌즈와 O-ring',
+        summary: '침동식 렌즈 — FED는 링, Konishiroku와 Serena는 그냥.',
+        image: '/images/2026-10-04.jpg',
+        url: '2026/2026-10-04.html',
+        category: ['photo', 'optics'],
+        tag: 'Photo · Lens'
+      },
+      {
+        year: '2026',
+        date: '2026-01-06',
+        title: 'iPod Classic 6th mod',
+        summary: 'Larger (> 128GB) flashmods와 하우징 교체.',
+        image: '/images/2026-01-06.jpg',
+        url: '2026/2026-01-06.html',
+        category: ['tech', 'audio', 'mod'],
+        tag: 'Tech · iPod'
+      },
+
+      // 2025 Posts
+      {
+        year: '2025',
+        date: '2025-12-14',
+        title: 'Bambu Lab A1 mini',
+        summary: '3D print ipod parts - bezel 3D 프린팅.',
+        image: '/images/2025-12-14.jpg',
+        url: '2025/2025-12-14.html',
+        category: ['tech', '3dprint'],
+        tag: 'Tech · 3D Print'
+      },
+      {
+        year: '2025',
+        date: '2025-12-13',
+        title: 'Nextcloud!!',
+        summary: 'Raspberry Pi 4B+, SSD 기반 개인 클라우드 구축.',
+        image: '/images/2025-12-13.jpg',
+        url: '2025/2025-12-13.html',
+        category: ['tech', 'raspberrypi'],
+        tag: 'Tech · Nextcloud'
+      },
+      {
+        year: '2025',
+        date: '2025-12-03',
+        title: 'AI hallucination',
+        summary: '로컬 AI 모델의 할루시네이션 탐구.',
+        image: '/images/2025-12-03.jpg',
+        url: '2025/2025-12-03.html',
+        category: ['tech', 'ai'],
+        tag: 'Tech · AI'
+      },
+      {
+        year: '2025',
+        date: '2025-12-01',
+        title: 'Raspberry Pi 5 — Boot from SSD',
+        summary: 'SSD HAT 장착 및 Ollama를 활용한 Local AI 세팅.',
+        image: '/images/2025-12-01.jpg',
+        url: '2025/2025-12-01.html',
+        category: ['tech', 'raspberrypi'],
+        tag: 'Tech · RPi 5'
+      },
+      {
+        year: '2025',
+        date: '2025-11-20',
+        title: 'Kindle 4 — Bricked & Diags',
+        summary: '벽돌된 킨들4 fastboot reboot 및 다이애그 복구.',
+        image: '/images/2025-11-20.jpg',
+        url: '2025/2025-11-20.html',
+        category: ['e-reader', 'mod'],
+        tag: 'Kindle · Repair'
+      },
+      {
+        year: '2025',
+        date: '2025-10-07',
+        title: 'Raspberry Pi 5 16G',
+        summary: 'Samba NAS 구축 및 홈 서버 환경 구성.',
+        image: '/images/2025-10-07.jpg',
+        url: '2025/2025-10-07.html',
+        category: ['tech', 'raspberrypi'],
+        tag: 'Tech · NAS'
+      },
+      {
+        year: '2025',
+        date: '2025-10-06',
+        title: 'Bipedal Robot — Pico W',
+        summary: '라즈베리 파이 피코 W 기반 2족보행 로봇 제작.',
+        image: '/images/2025-10-06.jpg',
+        url: '2025/2025-10-06.html',
+        category: ['tech', 'robotics'],
+        tag: 'Tech · Robot'
+      },
+      {
+        year: '2025',
+        date: '2025-09-27',
+        title: 'iPod 5 + 5.5 + 6 + 7',
+        summary: 'Franken iPod — 여러 세대 부품 스왑과 커스텀 빌드.',
+        image: '/images/2025-09-27.jpg',
+        url: '2025/2025-09-27.html',
+        category: ['tech', 'audio', 'mod'],
+        tag: 'Mod · iPod'
+      },
+      {
+        year: '2025',
+        date: '2025-09-23',
+        title: 'Kindle Keyboard (3rd Gen)',
+        summary: '물리 쿼티 키보드가 달린 킨들 3세대 소장과 관리.',
+        image: '/images/2025-09-23.jpg',
+        url: '2025/2025-09-23.html',
+        category: ['e-reader'],
+        tag: 'Kindle · 3rd'
+      },
+      {
+        year: '2025',
+        date: '2025-09-07',
+        title: 'Kindle 2 — Jailbreak & KUAL',
+        summary: '클래식 킨들 2세대 탈옥 및 KUAL 세팅.',
+        image: '/images/2025-09-07.jpg',
+        url: '2025/2025-09-07.html',
+        category: ['e-reader', 'mod'],
+        tag: 'Kindle · KUAL'
+      },
+      {
+        year: '2025',
+        date: '2025-08-21',
+        title: 'IPOD Classic SSD & Housing',
+        summary: '서랍 속 아이팟들의 부활. 5/7세대에 SSD와 대용량 배터리 이식, m4b 오디오북 머신.',
+        image: '/images/2025-08-21.jpg',
+        url: '2025/2025-08-21.html',
+        category: ['tech', 'audio', 'mod'],
+        tag: 'Mod · iPod'
+      },
+      {
+        year: '2025',
+        date: '2025-08-20',
+        title: 'KO1 — Kindle Oasis 1st Gen',
+        summary: '배터리 교체 가능한 킨들 오아시스 1세대 수집기. 코리더(KOReader) 세팅.',
+        image: '/images/2025-08-20.jpg',
+        url: '2025/2025-08-20.html',
+        category: ['e-reader', 'mod'],
+        tag: 'Kindle · KO1'
+      },
+      {
+        year: '2025',
+        date: '2025-07-31',
+        title: 'Ambivert — ENTJ / INTJ',
+        summary: '내향과 외향의 중간 스펙트럼에서. 상황에 따라 변하는 에너지에 대한 생각.',
+        image: '/images/2025-07-31.jpg',
+        url: '2025/2025-07-31.html',
+        category: ['life'],
+        tag: 'Life · MBTI'
+      },
+      {
+        year: '2025',
+        date: '2025-07-30',
+        title: 'DO_FACTORY_RESTORE',
+        summary: '킨들 무한부팅 복구 방법. DO_FACTORY_RESTORE와 winterbreak 탈옥 복구 팁.',
+        image: '/images/2025-07-30.jpg',
+        url: '2025/2025-07-30.html',
+        category: ['e-reader', 'mod'],
+        tag: 'Kindle · Unbrick'
+      },
+      {
+        year: '2025',
+        date: '2025-05-30',
+        title: 'Sony xm6, xm5',
+        summary: '소니 플래그십 무선 헤드폰 라인업과 노이즈 캔슬링 음향 탐구.',
+        image: '/images/2025-05-30-01.jpg',
+        url: '2025/2025-05-30.html',
+        category: ['audio'],
+        tag: 'Audio · Sony'
+      },
+      {
+        year: '2025',
+        date: '2025-03-04',
+        title: 'Kindle Scribe Jailbreak',
+        summary: '킨들 스크라이브 대화면 e-ink 단말기 탈옥과 필기 워크플로우.',
+        image: '/images/2025-03-04.jpg',
+        url: '2025/2025-03-04.html',
+        category: ['e-reader', 'mod'],
+        tag: 'Kindle · Scribe'
+      },
+      {
+        year: '2025',
+        date: '2025-03-03',
+        title: 'Montblanc & Bock Nib Swap',
+        summary: '몽블랑 만년필과 복(Bock) 닙 피팅, 잉크 흐름과 펜촉 커스텀.',
+        image: '/images/2025-03-03.jpg',
+        url: '2025/2025-03-03.html',
+        category: ['stationery'],
+        tag: 'Pens · Montblanc'
+      },
+      {
+        year: '2025',
+        date: '2025-02-15',
+        title: 'Mars & Febble',
+        summary: '포터블 전자책 단말기 Mars & Febble 기기 리뷰.',
+        image: '/images/2025-02-15.jpg',
+        url: '2025/2025-02-15.html',
+        category: ['e-reader'],
+        tag: 'E-Reader'
+      },
+      {
+        year: '2025',
+        date: '2025-02-11',
+        title: 'RIP — Apple Watch',
+        summary: '리퍼비시 애플워치 수명과 스마트워치에 대한 단상.',
+        image: '/images/2025-02-11.jpg',
+        url: '2025/2025-02-11.html',
+        category: ['tech', 'mod'],
+        tag: 'Hardware'
+      },
+
+      // 2024 Posts
+      {
+        year: '2024',
+        date: '2024-10-13',
+        title: 'Kindle Oasis Battery Swap',
+        summary: '킨들 오아시스 본체 배터리 적출 및 신품 배터리 교체 수리.',
+        image: '/images/2024-10-13.jpg',
+        url: '2024/2024-10-13.html',
+        category: ['e-reader', 'mod'],
+        tag: 'Kindle · Oasis'
+      },
+      {
+        year: '2024',
+        date: '2024-10-09',
+        title: 'IPOD Old Things Modding',
+        summary: '구형 아이팟 클래식 하우징 교체와 배터리 튜닝.',
+        image: '/images/2024-10-09.jpg',
+        url: '2024/2024-10-09.html',
+        category: ['tech', 'audio', 'mod'],
+        tag: 'Mod · iPod'
+      },
+      {
+        year: '2024',
+        date: '2024-07-26',
+        title: 'DAC & DAP Portable Audio',
+        summary: '고음질 휴대용 디지털 오디오 플레이어(DAP)와 외장 DAC 매칭.',
+        image: '/images/2024-07-26.jpg',
+        url: '2024/2024-07-26.html',
+        category: ['audio'],
+        tag: 'Audio · DAC'
+      },
+      {
+        year: '2024',
+        date: '2024-07-16',
+        title: 'SSD & Storage Archiving',
+        summary: '외장 스토리지 및 대용량 자료 아카이브 드라이브 구축.',
+        image: '/images/2024-07-16.jpg',
+        url: '2024/2024-07-16.html',
+        category: ['tech'],
+        tag: 'Tech · Storage'
+      },
+      {
+        year: '2024',
+        date: '2024-07-09',
+        title: 'Homemade Drip Coffee Bags',
+        summary: '원두 블렌딩과 드립백 커피 직접 실링하여 만드는 일상 루틴.',
+        image: '/images/2024-07-09.jpg',
+        url: '2024/2024-07-09.html',
+        category: ['life'],
+        tag: 'Coffee · Life'
+      },
+      {
+        year: '2024',
+        date: '2024-07-05',
+        title: 'Ultrawide Monitor Desk Setup',
+        summary: '와이드 모니터 기반의 미니멀 작업실 데스크 환경 구성.',
+        image: '/images/2024-07-05.jpg',
+        url: '2024/2024-07-05.html',
+        category: ['tech'],
+        tag: 'Desk Setup'
+      },
+      {
+        year: '2024',
+        date: '2024-07-01',
+        title: 'Wired IEM — In-Ear Monitors',
+        summary: '유선 이어폰만의 직관적인 해상력과 케이블 매칭 매력.',
+        image: '/images/2024-07-01.jpg',
+        url: '2024/2024-07-01.html',
+        category: ['audio'],
+        tag: 'Audio · IEM'
+      },
+      {
+        year: '2024',
+        date: '2024-06-14',
+        title: 'Kakimori Glass & Brass Dip Pen',
+        summary: '카키모리 딥펜으로 적어 내려가는 잉크 글씨와 필감.',
+        image: '/images/2024-06-14.jpg',
+        url: '2024/2024-06-14.html',
+        category: ['stationery'],
+        tag: 'Stationery'
+      },
+      {
+        year: '2024',
+        date: '2024-06-01',
+        title: 'Sony, B&W, Shure Wireless',
+        summary: '소니, 바워스앤윌킨스, 슈어 무선 헤드폰 비교 청음.',
+        image: '/images/2024-06-01-2nd.jpg',
+        url: '2024/2024-06-01-2nd.html',
+        category: ['audio'],
+        tag: 'Audio · Headphone'
+      },
+      {
+        year: '2024',
+        date: '2024-05-23',
+        title: 'M-Audio Keystation 61 MK3',
+        summary: '61건반 MIDI 마스터 키보드와 홈 레코딩 셋업.',
+        image: '/images/2024-05-23.jpg',
+        url: '2024/2024-05-23.html',
+        category: ['tech', 'audio'],
+        tag: 'MIDI · Gear'
+      },
+      {
+        year: '2024',
+        date: '2024-05-21',
+        title: 'Miscellany & Objects (흑돼지)',
+        summary: '일상의 잡동사니들과 아날로그 소장품 모음.',
+        image: '/images/2024-05-21.jpg',
+        url: '2024/2024-05-21.html',
+        category: ['life'],
+        tag: 'Collection'
+      },
+      {
+        year: '2024',
+        date: '2024-05-15',
+        title: 'Noise Cancelling Shootout',
+        summary: 'Sony, Bose, B&O, B&W 4대 노이즈 캔슬링 성향 비교.',
+        image: '/images/2024-05-15.jpg',
+        url: '2024/2024-05-15.html',
+        category: ['audio'],
+        tag: 'Audio · ANC'
+      },
+      {
+        year: '2024',
+        date: '2024-05-13',
+        title: 'Kobo Libra Colour vs Kindle',
+        summary: '코보 리브라 컬러와 킨들 기기별 색감 및 페이지 렌더링.',
+        image: '/images/2024-05-13.jpg',
+        url: '2024/2024-05-13.html',
+        category: ['e-reader'],
+        tag: 'Kindle · Kobo'
+      },
+      {
+        year: '2024',
+        date: '2024-05-11',
+        title: 'ENTJ Perspective',
+        summary: '성격 유형과 생산성에 대한 개인적인 기록.',
+        image: '/images/2024-05-11.jpg',
+        url: '2024/2024-05-11.html',
+        category: ['life'],
+        tag: 'Life'
+      }
+    ];
+
+    let currentFilter = 'all';
+
+    function renderPosts(filter = 'all') {
+      const container = document.getElementById('posts-grid');
+      container.innerHTML = '';
+
+      const filtered = POSTS.filter(post => {
+        if (filter === 'all') return true;
+        if (filter === '2026') return post.year === '2026';
+        if (filter === '2025') return post.year === '2025';
+        if (filter === '2024') return post.year === '2024';
+        return post.category && post.category.includes(filter);
+      });
+
+      filtered.forEach(post => {
+        const card = document.createElement('a');
+        card.href = post.url;
+        card.className = 'bento-card group rounded-2xl p-4 flex flex-col justify-between overflow-hidden relative block hover:no-underline';
+        
+        card.innerHTML = `
+          <div>
+            <div class="relative w-full h-44 rounded-xl overflow-hidden mb-3 bg-surface-900 border border-white/5">
+              <img src="${post.image}" alt="${post.title}" 
+                   class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                   loading="lazy" />
+              <div class="absolute top-2.5 left-2.5">
+                <span class="tag-badge px-2 py-0.5 rounded-md bg-black/60 text-sky-300 border border-white/10 backdrop-blur-md">
+                  ${post.tag}
+                </span>
+              </div>
+              <div class="absolute top-2.5 right-2.5 font-mono text-[10px] px-2 py-0.5 rounded-md bg-black/60 text-slate-300 backdrop-blur-md">
+                ${post.date}
+              </div>
+            </div>
+
+            <h3 class="font-bold text-white text-base group-hover:text-sky-300 transition leading-snug line-clamp-1">
+              ${post.title}
+            </h3>
+            <p class="text-xs text-slate-400 mt-1.5 leading-relaxed line-clamp-2">
+              ${post.summary}
+            </p>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-white/[0.06] flex items-center justify-between text-[11px] font-mono text-slate-400">
+            <span class="text-slate-500">${post.year} Log</span>
+            <span class="text-sky-400 font-sans group-hover:translate-x-1 transition flex items-center gap-0.5">
+              Read <i data-lucide="chevron-right" class="w-3.5 h-3.5 inline"></i>
+            </span>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+
+      document.getElementById('count-all').innerText = POSTS.length;
+      document.getElementById('stat-count').innerText = POSTS.length;
+
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    }
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => {
+          b.className = 'filter-btn px-3 py-1.5 rounded-xl text-xs font-medium text-slate-400 hover:text-white hover:bg-white/5 transition';
+        });
+        btn.className = 'filter-btn px-3 py-1.5 rounded-xl text-xs font-medium bg-sky-500 text-white shadow-sm transition';
+        currentFilter = btn.getAttribute('data-filter');
+        renderPosts(currentFilter);
+      });
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderPosts('all');
+      document.getElementById('year').innerText = new Date().getFullYear();
+    });
+  </script>
+</body>
 </html>
