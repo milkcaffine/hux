@@ -17,6 +17,7 @@ GitHub Pages on `main` deploys this repo. `CNAME` is `mindsoap.net`. `www` is in
 2. Add `YYYY/YYYY-MM-DD.html`. Copy a recent post in that year folder; keep asset URLs root-relative (`/css/...`, `/js/...`, `/images/...`).
 3. Keep the shared chrome: `#headers` / `#footers` placeholders and `<script src="/js/site.js" defer></script>` in `<head>`. Set a real `<title>`, `description`, and the Open Graph tags (`og:title`, `og:description`, `og:url`, `og:image` with absolute `https://mindsoap.net/...` URLs). Give every `<img>` an `alt`.
 4. Add a card on the matching year index (`index.html` for the current year, or `index2024.html` / `index2025.html`). Optionally include a category badge (`photo`, `tech`, `writing`, etc.).
+5. Run `python3 build_search.py` to refresh `/js/posts-data.js` so the new post appears in site search.
 
 Internal links should stay root-relative (`/about.html`), not `milkcaffine.github.io`.
 
