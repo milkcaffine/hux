@@ -16,15 +16,23 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
   <link rel="stylesheet" href="/css/mindsoap.css">
+  <script src="/js/posts-data.js" defer></script>
 </head>
 <body>
   <div class="wrap">
     <header class="top">
       <a class="brand" href="/">mindsoap</a>
-      <nav class="nav" aria-label="Primary">
-        <a href="https://marsko.art" target="_blank" rel="noopener noreferrer">marsko</a>
-        <a href="https://davidbowie.kr" target="_blank" rel="noopener noreferrer">dolls</a>
-      </nav>
+      <div class="top-actions">
+        <nav class="nav" aria-label="Primary">
+          <a href="https://marsko.art" target="_blank" rel="noopener noreferrer">marsko</a>
+          <a href="https://davidbowie.kr" target="_blank" rel="noopener noreferrer">dolls</a>
+        </nav>
+        <div class="feed-search">
+          <svg class="feed-search-icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="feedSearchInput" class="feed-search-input" placeholder="search..." autocomplete="off" spellcheck="false" aria-label="Search posts">
+          <button type="button" id="feedSearchClear" class="feed-search-clear" aria-label="Clear" style="display:none;">&times;</button>
+        </div>
+      </div>
     </header>
 
     <p class="lede">Notes, photos, and small experiments.</p>
@@ -87,12 +95,158 @@
       </ul>
     </section>
 
+    <div id="feedNoResults" class="feed-no-results" style="display:none;"></div>
+
     <footer class="foot">
       mindsoap.net · <a href="/about.html">about</a> · <span id="y"></span>
     </footer>
   </div>
   <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
+    (function () {
+      document.getElementById("y").textContent = new Date().getFullYear();
+
+      var searchInput = document.getElementById("feedSearchInput");
+      var searchClear = document.getElementById("feedSearchClear");
+      var noResults = document.getElementById("feedNoResults");
+      var yearSections = Array.from(document.querySelectorAll("section.year"));
+
+      var items = [];
+      yearSections.forEach(function (sec) {
+        var lis = sec.querySelectorAll(".feed > li");
+        lis.forEach(function (li) {
+          var a = li.querySelector("a");
+          var href = a ? a.getAttribute("href") : "";
+          var titleEl = li.querySelector(".title");
+          var dateEl = li.querySelector(".date");
+          var rawTitle = titleEl ? titleEl.textContent : "";
+          var rawDate = dateEl ? dateEl.textContent : "";
+          items.push({
+            li: li,
+            section: sec,
+            href: href,
+            titleEl: titleEl,
+            rawTitle: rawTitle,
+            rawDate: rawDate
+          });
+        });
+      });
+
+      function escapeHtml(str) {
+        return (str || "").replace(/[&<>"']/g, function (m) {
+          return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[m];
+        });
+      }
+
+      function escapeRegExp(str) {
+        return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      }
+
+      function highlight(text, tokens) {
+        if (!text || !tokens.length) return escapeHtml(text);
+        var pat = tokens.map(escapeRegExp).join("|");
+        try {
+          var re = new RegExp("(" + pat + ")", "gi");
+          return escapeHtml(text).replace(re, '<mark class="feed-highlight">$1</mark>');
+        } catch (e) {
+          return escapeHtml(text);
+        }
+      }
+
+      function getCorpus(item) {
+        if (item._corpus) return item._corpus;
+        var texts = [item.rawTitle, item.rawDate, item.href];
+        if (window.MINDSOAP_POSTS) {
+          var matched = window.MINDSOAP_POSTS.find(function (p) {
+            return p.url && (p.url.indexOf(item.href) !== -1 || item.href.indexOf(p.url.replace(/^\//, '')) !== -1);
+          });
+          if (matched) {
+            if (matched.category) texts.push(matched.category);
+            if (matched.desc) texts.push(matched.desc);
+            if (matched.body) texts.push(matched.body);
+          }
+        }
+        item._corpus = texts.join(" ").toLowerCase();
+        return item._corpus;
+      }
+
+      function filterFeed() {
+        var q = searchInput.value.trim().toLowerCase();
+        var tokens = q.split(/\s+/).filter(Boolean);
+
+        if (tokens.length === 0) {
+          searchClear.style.display = "none";
+          noResults.style.display = "none";
+          yearSections.forEach(function (sec) { sec.style.display = ""; });
+          items.forEach(function (it) {
+            it.li.style.display = "";
+            if (it.titleEl) it.titleEl.innerHTML = escapeHtml(it.rawTitle);
+          });
+          return;
+        }
+
+        searchClear.style.display = "block";
+        var totalMatches = 0;
+        var secMatchCount = new Map();
+        yearSections.forEach(function (sec) { secMatchCount.set(sec, 0); });
+
+        items.forEach(function (it) {
+          var corpus = getCorpus(it);
+          var match = true;
+          for (var i = 0; i < tokens.length; i++) {
+            if (corpus.indexOf(tokens[i]) === -1) {
+              match = false;
+              break;
+            }
+          }
+
+          if (match) {
+            it.li.style.display = "";
+            secMatchCount.set(it.section, secMatchCount.get(it.section) + 1);
+            totalMatches++;
+            if (it.titleEl) it.titleEl.innerHTML = highlight(it.rawTitle, tokens);
+          } else {
+            it.li.style.display = "none";
+            if (it.titleEl) it.titleEl.innerHTML = escapeHtml(it.rawTitle);
+          }
+        });
+
+        yearSections.forEach(function (sec) {
+          var cnt = secMatchCount.get(sec) || 0;
+          sec.style.display = cnt > 0 ? "" : "none";
+        });
+
+        if (totalMatches === 0) {
+          noResults.textContent = 'No posts found for "' + searchInput.value.trim() + '"';
+          noResults.style.display = "block";
+        } else {
+          noResults.style.display = "none";
+        }
+      }
+
+      searchInput.addEventListener("input", filterFeed);
+
+      searchClear.addEventListener("click", function () {
+        searchInput.value = "";
+        filterFeed();
+        searchInput.focus();
+      });
+
+      searchInput.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          searchInput.value = "";
+          filterFeed();
+          searchInput.blur();
+        } else if (e.key === "Enter") {
+          var firstVisible = items.find(function (it) {
+            return it.li.style.display !== "none";
+          });
+          if (firstVisible) {
+            var a = firstVisible.li.querySelector("a");
+            if (a) a.click();
+          }
+        }
+      });
+    })();
   </script>
 </body>
 </html>
