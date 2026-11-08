@@ -54,6 +54,7 @@ LEGACY_CATEGORIES = {
     "/2025/2025-12-03.html": "etc",
     "/2026/2026-10-29.html": "etc",
     "/2026/2026-10-31-2nd.html": "etc",
+    "/2026/2026-11-08.html": "etc",
 }
 
 def infer_category(rel_path, html, title, desc, body_text):
