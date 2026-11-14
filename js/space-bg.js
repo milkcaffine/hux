@@ -71,7 +71,7 @@
   // ===== Web Audio (Quiet Night/Space Synth + Salvage Chime) =====
   var audioCtx = null;
   var masterGain = null;
-  var ambientOn = false;
+  var ambientOn = true;
 
   function ensureAudio() {
     if (!audioCtx) {
@@ -83,7 +83,7 @@
     return audioCtx;
   }
 
-  function toggleAmbient() {
+  function syncAmbientNodes() {
     var ac = ensureAudio();
     if (!ac) return;
     if (!masterGain) {
@@ -115,14 +115,27 @@
         osc.start();
       });
     }
-
-    ambientOn = !ambientOn;
     masterGain.gain.setTargetAtTime(ambientOn ? 0.55 : 0, ac.currentTime, 0.25);
+  }
+
+  function toggleAmbient() {
+    ambientOn = !ambientOn;
+    syncAmbientNodes();
     if (pillAudio) {
       pillAudio.classList.toggle('is-on', ambientOn);
       pillAudio.textContent = ambientOn ? '♪ SPACE: ON' : '♪ SPACE: OFF';
     }
   }
+
+  function unlockDefaultAmbient() {
+    if (ambientOn && !masterGain) {
+      syncAmbientNodes();
+    }
+    window.removeEventListener('pointerdown', unlockDefaultAmbient);
+    window.removeEventListener('keydown', unlockDefaultAmbient);
+  }
+  window.addEventListener('pointerdown', unlockDefaultAmbient, { passive: true });
+  window.addEventListener('keydown', unlockDefaultAmbient, { passive: true });
 
   function playChime(hit) {
     var ac = ensureAudio();
