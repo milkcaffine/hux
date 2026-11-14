@@ -17,8 +17,58 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
   <link rel="stylesheet" href="/css/mindsoap.css">
   <script src="/js/posts-data.js" defer></script>
+  <script src="/js/space-bg.js" defer></script>
+  <style>
+    #spaceBgCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .wrap {
+      position: relative;
+      z-index: 1;
+    }
+    .space-hud {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 11px;
+      color: #71717a;
+      background: rgba(9, 9, 11, 0.78);
+      border: 1px solid #1c1c21;
+      border-radius: 999px;
+      padding: 4px 10px;
+      backdrop-filter: blur(6px);
+    }
+    .space-audio-btn {
+      background: none;
+      border: none;
+      color: #a1a1aa;
+      font: inherit;
+      cursor: pointer;
+      padding: 0;
+      transition: color 0.15s ease;
+    }
+    .space-audio-btn:hover { color: #ececef; }
+    .space-audio-btn.is-on { color: #38bdf8; }
+    .space-hud-sep { color: #27272a; }
+  </style>
 </head>
 <body>
+  <canvas id="spaceBgCanvas" aria-hidden="true"></canvas>
+  <div class="space-hud">
+    <button type="button" id="spaceAudioBtn" class="space-audio-btn">♪ SPACE: OFF</button>
+    <span class="space-hud-sep">·</span>
+    <span>✦ <span id="spaceSalvageCount">0</span></span>
+  </div>
   <div class="wrap">
     <header class="top">
       <a class="brand" href="/">mindsoap</a>
