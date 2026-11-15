@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="방치됐던 라즈베리 파이 피코 W 고양이 로봇에 상시전원을 달아 책상 위 스마트 탁상시계로 개조한 기록">
+    <meta name="author" content="HML">
+    <title>고양이 로봇을 책상 위 탁상시계로 — mindsoap</title>
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/3-col-portfolio.css" rel="stylesheet">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <meta property="og:site_name" content="mindsoap">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="고양이 로봇을 책상 위 탁상시계로 — mindsoap">
+    <meta property="og:description" content="방치됐던 라즈베리 파이 피코 W 고양이 로봇에 상시전원을 달아 책상 위 스마트 탁상시계로 개조한 기록">
+    <meta property="og:url" content="https://mindsoap.net/2026/2026-11-15.html">
+    <meta property="og:image" content="https://mindsoap.net/images/2026-11-15.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <script src="/js/site.js" defer></script>
+</head>
+    <body>
+        <div id="headers"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h1 class="page-header">고양이 로봇을 책상 위 탁상시계로 <small>2026-11-15</small></h1>
+        </div>
+      </div>
+      <div class="row">
+      <div class="post">
+      <p>
+        <img src="/images/2026-11-15.jpg" alt="전면 도트 매트릭스 LED에 시각이 표시되고 옆면에 상시전원 케이블이 꽂힌 피코 W 고양이 로봇"><br>
+        <a href="/2026/2026-10-31.html">지난번</a> 거실 장애물 지옥 앞에서 자꾸 픽픽 넘어지던 라즈베리 파이 피코 W(Raspberry Pi Pico W) 고양이 로봇.<br>
+        결국 바닥 산책은 깔끔하게 접고, 변환 커넥터를 하나 구해 상시전원을 물린 뒤 아예 책상 위에 세워두기로 했다.<br>
+        <br>
+        어차피 Wi-Fi 붙는 피코 W 보드에 초음파 거리 센서, 8x16 도트 매트릭스, RGB LED, 부저, 4관절 서보까지 다 달려 있으니<br>
+        가만히 장식만 하기엔 아까워서 '책상 위 스마트 펫 겸 탁상시계'로 성격을 싹 바꿨다.<br>
+        <br>
+        - <strong>단독 NTP 시계 &amp; 깜빡이 큰 시계</strong>: 브라우저나 PC를 꺼도 피코 W가 직접 NTP로 한국 시간을 맞춰 온다. 작은 전광판에서 흘러가는 시계 말고도 <code>시(2자리) → 분(2자리) → 요일</code> 순으로 크게 깜빡이는 모드도 추가했다.<br>
+        - <strong>손짓 제스처 &amp; 서울·도쿄 날씨</strong>: 코 앞 초음파 센서(11cm 이내)에 손을 쓱 갖다 대면 야옹 울면서 <code>스크롤 시계 → 깜빡이 시계 → 서울 날씨 → 도쿄 날씨 → 랜덤 표정</code> 순으로 화면이 넘어간다.<br>
+        - <strong>착석/비움 감지 &amp; 50분 스트레칭 알림</strong>: 45초 넘게 자리를 비우면 전광판을 어둡게 낮추고 졸린 눈으로 쉬다가, 다시 앉으면 반갑게 깨어나 인사한다. 50분 이상 계속 앉아 있으면 몸을 흔들며 <code>STRETCH!</code>를 띄운다.<br>
+        - <strong>부저 튜닝 &amp; 로봇어 + PWM 말하기</strong>: 귀 따갑던 삐삐삑 소리 대신 PWM 볼륨 커브를 낮추고 주파수를 연속으로 이어 붙여 부드러운 <code>냐~옹</code> 소리로 다듬었다. R2-D2/월-E 스타일 로봇어 옹알이에 62.5kHz PWM으로 짧은 한국어·영어 인사까지 우겨넣었더니 정각과 30분마다 랜덤 표정을 지으며 한마디씩 던진다. ㅋㅋ<br>
+        - <strong>상시전원 안정화</strong>: 정지 중에 서보에 계속 전류가 흐르지 않게 <code>detach()</code>를 실제로 동작하게 고치고, 장시간 가동용 32비트 타이머와 Wi-Fi 자동 재연결, 야간/무음 모드도 넣었다.<br>
+        <br>
+        <img src="/images/2026-11-15-01.jpg" alt="상시전원 L자 커넥터와 RGB LED가 켜진 고양이 로봇 상단 보드와 서보 배선"><br>
+        <img src="/images/2026-11-15-02.jpg" alt="고양이 로봇 상단에 장착된 라즈베리 파이 피코 W 보드 근접 사진"><br>
+        <br>
+        아직 납땜이라는 허들은 못 넘어서 인두기 한 번 잡을 줄은 모르지만,<br>
+        이런 파이 기반 프로젝트는 그냥 핀 꽂고 코드만 얹어서 전혀 다른 물건으로 계속 변신시킬 수 있다는 게 참 좋다.<br>
+        집에서 굴러다니던 장난감이 책상 위에서 제일 손이 많이 가는 시계가 된 걸 보니, 뭔가 새로 사는 것보다 훨씬 재미있다. ㅋㅋ<br>
+      </p>
+      </div>
+      </div>
+      <div class="row text-center year-nav-row">
+        <div id="footers"></div>
+      </div>
+    </div>
+    <div class="container">
+      <hr>
+      <footer>
+        <div class="row">
+          <div class="col-lg-12">
+            <p>Copyright &copy; mindsoap.net  <span id="getCurrentDate"></span></p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script>
+      document.getElementById("getCurrentDate").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
