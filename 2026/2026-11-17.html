@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Raspberry Pi Pico 2 W + 2.13인치 E-ink + M5Stack CardKB + Google Docs + Gemini AI로 만든 미니 전자잉크 메모장 겸 타이핑 머신">
+    <meta name="author" content="HML">
+    <title>라즈베리파이 피코 2 W로 만든 E-ink 미니 메모장 & AI 타이핑 머신 — mindsoap</title>
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/3-col-portfolio.css" rel="stylesheet">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <meta property="og:site_name" content="mindsoap">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="라즈베리파이 피코 2 W로 만든 E-ink 미니 메모장 & AI 타이핑 머신 — mindsoap">
+    <meta property="og:description" content="Raspberry Pi Pico 2 W + 2.13인치 E-ink + M5Stack CardKB + Google Docs + Gemini AI로 만든 미니 전자잉크 메모장 겸 타이핑 머신">
+    <meta property="og:url" content="https://mindsoap.net/2026/2026-11-17.html">
+    <meta property="og:image" content="https://mindsoap.net/images/2026-11-17.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <script src="/js/site.js" defer></script>
+</head>
+    <body>
+        <div id="headers"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h1 class="page-header">라즈베리파이 피코 2 W로 만든 E-ink 미니 메모장 & AI 타이핑 머신 <small>2026-11-17</small></h1>
+        </div>
+      </div>
+      <div class="row">
+      <div class="post">
+      <p>
+        <strong>Raspberry Pi Pico 2 W + 2.13" E-ink + M5Stack CardKB + Google Docs + Gemini AI</strong><br>
+        <br>
+        <strong>1. "피코로 이게 다 된다고?" — 예기치 못한 급발진</strong><br>
+        <a href="/2026/2026-11-16.html">어제 포스트</a> 말미에 <em>"다음 E-ink 메모장이나 타이핑 머신 프로젝트도 매끄럽게 굴러갈 것 같다"</em>고 적어두긴 했지만, 이렇게 하루 만에 바로 완성하게 될 줄은 몰랐다.<br>
+        원래는 얼마 전 구해둔 라즈베리 파이 제로 2 W(Pi Zero 2 W)를 가지고 제대로 된 스탠드얼론 타이핑 머신을 만들 생각으로 적당한 E-ink 화면을 물색하던 중이었다.<br>
+        그런데 책상 서랍을 뒤적거리다 최근 출시된 <strong>라즈베리 파이 피코 2 W(Raspberry Pi Pico 2 W)</strong>와 굴러다니던 <strong>2.13인치 E-ink 디스플레이</strong>, 그리고 초소형 QWERTY 자판인 <strong>M5Stack CardKB</strong>가 눈에 들어왔다.<br>
+        <br>
+        <em>"어차피 타이핑과 메모 전송 정도면 리눅스 OS까지 갈 필요도 없이, 피코 2 W의 RP2350 듀얼코어와 Wi-Fi만으로도 충분하지 않을까?"</em><br>
+        가벼운 호기심으로 시작한 테스트였는데, 만들다 보니 욕심이 붙어서 기능이 눈덩이처럼 불어났다.<br>
+        <br>
+        <img src="/images/2026-11-17.jpg" alt="라즈베리파이 피코 2 W, 2.13인치 E-ink 디스플레이, M5Stack CardKB 키보드로 구성한 미니 E-ink 메모장"><br>
+        <br>
+        <strong>2. MicroPython 세팅과 구글 문서(Google Docs) 클라우드 전송</strong><br>
+        피코 2 W를 부트로더 모드로 진입시켜 무선 기능이 포함된 최신 <code>Pico 2 W MicroPython UF2</code> 펌웨어를 올리고 Thonny로 코드를 구성했다.<br>
+        하드웨어에서 타이핑한 내용을 PC나 스마트폰으로 옮기는 과정이 번거로우면 결국 안 쓰게 된다. 그래서 이번에도 어제 검증한 <strong>Google Apps Script(GAS) 웹 앱</strong> 방식을 붙였다.<br>
+        <br>
+        - <strong>ESC 단축키 한 방 전송</strong>: 글을 쓰다가 <code>ESC</code> 키를 누르면, 먼저 피코 내부 플래시 메모리(<code>draft.txt</code>)에 안전하게 1차 저장된다.<br>
+        - <strong>클라우드 동기화</strong>: 이후 Wi-Fi에 접속하여 상단 상태창이 <code>WiFi Linking..</code> → <code>Sending Docs..</code>로 전환되고, GAS Webhook 엔드포인트로 JSON 본문을 전송한다.<br>
+        - <strong>Google Docs 자동 누적</strong>: 전송이 끝나면 화면에 <code>[SENT DOCS!]</code>가 뜨고, PC의 구글 문서에 현재 시각 타임스탬프와 함께 방금 쓴 초안이 단락별로 깔끔하게 추가된다.<br>
+        - <strong>새로 쓰기</strong>: 구글 문서로 전송을 마친 뒤 백지 상태로 새로 쓰고 싶다면 <code>/clear</code> 명령어를 치면 화면이 깨끗하게 비워진다.<br>
+        <br>
+        <img src="/images/2026-11-17-01.jpg" alt="E-ink 화면에 표시된 명령어 도움말(ESC 구글문서 전송, /clear, /1~/3 메모 슬롯, /pomo 타이머, /read 전자책, /ai 제미나이 등)"><br>
+        <br>
+        <strong>3. 생각보다 많은 기능이 들어갔다</strong><br>
+        단순 메모장으로 끝내기 아쉬워 평소 책상 위에서 필요했던 기능들을 <code>/</code> 슬래시 명령어로 하나둘씩 구현했다.<br>
+        <br>
+        - <strong>Gemini AI 즉석 질의응답 (<code>/ai &lt;질문&gt;</code>)</strong>: MicroPython 코드(<code>main.py</code>)에 Gemini API를 직접 호출하도록 구현했다. 키보드로 <code>/ai who are you?</code>라고 입력하고 엔터를 치면, 피코가 Wi-Fi로 Gemini 서버에 직접 요청을 날려 화면에 <code>[ AI DONE! ]</code> 상태와 함께 AI의 영문 답변을 즉시 띄워준다.<br>
+        - <strong>3개 멀티 슬롯 메모 (<code>/1</code>, <code>/2</code>, <code>/3</code>)</strong>: 작업 중 문맥을 잃지 않고 서로 다른 아이디어나 할 일 목록을 분리해 작성할 수 있는 3개의 독립 버퍼 메모 슬롯.<br>
+        - <strong>전자책 뷰어 (<code>/read</code>)</strong>: 피코 플래시의 <code>book.txt</code> 파일을 불러와 스페이스바(Next)와 백스페이스(Prev)로 페이지를 넘기며 읽을 수 있는 초경량 E-reader 모드.<br>
+        - <strong>25분 뽀모도로 타이머 (<code>/pomo</code>)</strong>: 글쓰기나 작업에 몰입할 수 있게 돕는 포커스 타이머 카운트다운.<br>
+        - <strong>탁상시계 & 다크 모드 (<code>/lock</code>, <code>/dark</code>)</strong>: 사용하지 않을 때는 책상 위 미니 전자잉크 시계로 세워둘 수 있고, 취향에 따라 흑백을 반전시키는 다크 모드도 지원한다.<br>
+        <br>
+        <img src="/images/2026-11-17-02.jpg" alt="Pico 2 W에서 /ai 명령어로 Gemini AI를 직접 호출해 E-ink 화면에 답변이 출력된 모습"><br>
+        <br>
+        <strong>4. 피코의 재발견</strong><br>
+        MCU급 보드에서 Wi-Fi 통신, SSL 핸드셰이크, 2.13인치 E-ink 부분 갱신(Partial Refresh), I2C 키보드 인터럽트 처리까지 동시에 돌리면 버벅거리지 않을까 걱정했는데, 웬걸 반응 속도도 시원시원하고 안정적이다.<br>
+        새삼 RP2350 기반 피코 2 W의 가성비와 퍼포먼스에 감탄하게 된다. <em>"피코 대단한데 ㅋㅋㅋ"</em> 소리가 절로 나온다.<br>
+        <br>
+        이번 프로토타입으로 워크플로우와 E-ink 드라이버 제어 감각을 확실히 익혔으니, 다음번에는 원래 목표였던 <strong>라즈베리 파이 제로 2 W</strong>에 조금 더 큼직한 E-ink 패널과 전용 하우징을 입혀 본격적인 전용 타이핑 머신을 만들어봐야겠다.<br>
+      </p>
+      </div>
+      </div>
+      <div class="row text-center year-nav-row">
+        <div id="footers"></div>
+      </div>
+    </div>
+    <div class="container">
+      <hr>
+      <footer>
+        <div class="row">
+          <div class="col-lg-12">
+            <p>Copyright &copy; mindsoap.net  <span id="getCurrentDate"></span></p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script>
+      document.getElementById("getCurrentDate").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
