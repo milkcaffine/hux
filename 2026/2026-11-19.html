@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Raspberry Pi Pico W 고양이 로봇과 Pico 2 W E-ink 메모장을 Wi-Fi·Google Sheets·Gemini로 엮은 책상 위 작은 IoT 생태계 완결편">
+    <meta name="author" content="HML">
+    <title>책상 위 작은 피코 IoT 생태계 — 고양이 로봇과 E-ink 메모장 연결하기 — mindsoap</title>
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/3-col-portfolio.css" rel="stylesheet">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <meta property="og:site_name" content="mindsoap">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="책상 위 작은 피코 IoT 생태계 — 고양이 로봇과 E-ink 메모장 연결하기 — mindsoap">
+    <meta property="og:description" content="Raspberry Pi Pico W 고양이 로봇과 Pico 2 W E-ink 메모장을 Wi-Fi·Google Sheets·Gemini로 엮은 책상 위 작은 IoT 생태계 완결편">
+    <meta property="og:url" content="https://mindsoap.net/2026/2026-11-19.html">
+    <meta property="og:image" content="https://mindsoap.net/images/2026-11-19.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <script src="/js/site.js" defer></script>
+</head>
+    <body>
+        <div id="headers"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h1 class="page-header">책상 위 작은 피코 IoT 생태계 — 고양이 로봇과 E-ink 메모장 연결하기 <small>2026-11-19</small></h1>
+        </div>
+      </div>
+      <div class="row">
+      <div class="post">
+      <p>
+        <strong>Raspberry Pi Pico W + Pico 2 W + Google Sheets + Gemini Flash Lite + Apps Script</strong><br>
+        <br>
+        <img src="/images/2026-11-19.jpg" alt="책상 위에서 나란히 놓인 E-ink 미니 메모장(Pico 2 W)과 주황색 LED 표정을 짓고 있는 고양이 로봇(Pico W)"><br>
+        <br>
+        <strong>1. 따로 놀던 두 피코가 서로 연결됐다</strong><br>
+        지난 며칠간 <a href="/2026/2026-11-15.html">고양이 로봇 탁상시계(Pico W)</a>, <a href="/2026/2026-11-16.html">구글 시트 + Gemini 클라우드 두뇌</a>, 그리고 <a href="/2026/2026-11-17.html">E-ink 미니 메모장(Pico 2 W)</a>을 하나씩 만들었는데, 결국 이 둘이 책상 위에서 서로 대화하는 작은 IoT 생태계로 합쳐졌다.<br>
+        각자 Wi-Fi를 달고 놀다가 어느새 <strong>같은 집 Wi-Fi와 구글 시트(<code>A1</code>)를 중심으로 한 몸처럼 묶인</strong> 셈이다. 나란히 세워놓고 보니 E-ink 쪽에는 <code>(o_o) beep?</code> 얼굴이 떠 있고, 고양이 로봇은 주황색 LED 발바닥 눈으로 마주 보고 있어서 꽤 귀엽다. ㅋㅋ<br>
+        <br>
+        <strong>2. E-ink 메모장이 고양이 로봇 리모콘이 되다 (<code>/k</code>, <code>/cat</code>)</strong><br>
+        제일 손이 많이 가는 기능은 메모장 키보드(CardKB)로 고양이 로봇을 직접 조종하는 원격 제어다.<br>
+        에디터에서 <code>/k</code>나 <code>/cat</code> 명령어를 치고 엔터를 누르면, 피코 2 W가 로컬 Wi-Fi(<code>cat-robot.local</code>)로 고양이 로봇에게 HTTP 명령을 바로 쏜다.<br>
+        <br>
+        - <strong>대사 &amp; 옹알이 전송</strong>: <code>/k hello cat!</code>처럼 문장을 보내면 고양이 전광판에 글자가 흐르면서 R2-D2/월-E 스타일 로봇어로 옹알이한다. 문장 없이 <code>/k</code>만 치면 직전에 쓰던 줄을 그대로 넘겨준다.<br>
+        - <strong>모션 &amp; 표정 원격 조종</strong>: <code>/k MEOW</code>, <code>DANCE</code>, <code>NYAN</code>, <code>KNEAD</code>(꾹꾹이), <code>WIGGLE</code>(궁디 흔들기), <code>EMO:19</code>(하트), <code>SPEAK:HELLO</code>, <code>NIGHT:ON</code> 같은 명령도 메모장에서 바로 실행할 수 있다.<br>
+        - <strong>2페이지 도움말</strong>: 명령어가 너무 많아져서 메모장 안의 <code>/?</code> 도움말 화면도 1페이지(메모장 단축키)와 2페이지(고양이 리모콘 명령어)로 나눴다.<br>
+        <br>
+        <strong>3. 공용 클라우드 칠판(<code>BOARD</code>)과 《머더봇》 불어 단어장(<code>STUDY</code>)</strong><br>
+        원래 고양이 로봇만 1분마다 읽어오던 구글 시트 <code>A1</code> 셀을, 이번엔 E-ink 메모장의 대기(<code>LOCK</code>) 화면에서도 같이 읽도록 연결했다.<br>
+        이제 Apps Script와 Gemini가 시간대별로 생성하는 대사(아침 캘린더 브리핑, 오후 <em>SecUnit</em> 시니컬 로그, 밤 <code>SYS://MARSKO</code> 터미널)를 두 기기가 공용 클라우드 칠판처럼 동시에 띄워준다. 게다가 시트 <code>Archive</code> 탭에서 최근 8줄을 비교해 똑같은 대사가 연속으로 나오지 않게 중복 방지 가드까지 붙였다.<br>
+        <br>
+        메모장의 대기(<code>LOCK</code>) 화면도 어느덧 5종(<code>CLOCK</code>, <code>BOOK</code>, <code>FACE</code>, <code>STUDY</code>, <code>BOARD</code>)으로 늘어났다.<br>
+        <br>
+        - <strong><code>BOARD</code></strong>: 상단 <code>[MOOD]</code> 뱃지와 함께 구글 시트 <code>A1</code>의 최신 대사를 표시하는 클라우드 보드(<code>/b</code>로 바로 열기, <code>R</code>로 즉시 새로고침).<br>
+        - <strong><code>STUDY</code></strong>: 최근 읽던 《머더봇 다이어리》(<em>Journal d’un AssaSynth</em>)에서 뽑은 프랑스어 ↔ 영어 80단어 플래시카드. <code>R</code>이나 스페이스바로 다음 카드를 넘기면서 책상 위에서 틈틈이 훑어볼 수 있다.<br>
+        - <strong>지뢰찾기(<code>/g</code>)</strong>: 자잘한 딴짓용 미니게임까지 덤으로 얹었다.<br>
+        <br>
+        <strong>4. 피코 4부작 완결 메모</strong><br>
+        고양이 로봇 쪽도 정각/30분 수다(<code>CHIME</code>), 45초 자리 비움 시 최저 밝기 <code>z z Z</code> 수면 모드, 50분 스트레칭 알림, 공유기 장애 시 비상용 SoftAP까지 붙어서 이제 건드릴 거 없이 안정적인 책상 위 상주 세팅이 됐다.<br>
+        처음엔 각자 따로 놀던 피코 장난감 두 개였는데, 어느새 서로 통신하면서 Google Docs와 Sheets까지 오가는 걸 보니 나중에 지들끼리 음모라도 꾸미는 건 아닌가 싶다. ㅋㅋ<br>
+        <br>
+        아무튼 책상 위 피코 생태계 놀이는 여기서 깔끔하게 완결! 다음엔 완전히 다른 성격의 프로젝트로, 본격적인 <strong>Pi Zero 2 W 기반 전용 타이핑 머신</strong> 쪽을 만져볼 생각이다.<br>
+      </p>
+      </div>
+      </div>
+      <div class="row text-center year-nav-row">
+        <div id="footers"></div>
+      </div>
+    </div>
+    <div class="container">
+      <hr>
+      <footer>
+        <div class="row">
+          <div class="col-lg-12">
+            <p>Copyright &copy; mindsoap.net  <span id="getCurrentDate"></span></p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script>
+      document.getElementById("getCurrentDate").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
