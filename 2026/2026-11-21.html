@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="E-ink 메모장 케이스 테스트에서 시작해 안티그라비티와 Python 파라메트릭 STL로 완성한 아이팟 미니·3세대·4세대 3D 프린팅 케이스 제작기">
+    <meta name="author" content="HML">
+    <title>구형 아이팟(Mini · 3세대 · 4세대) 3D 프린팅 케이스 제작기 — mindsoap</title>
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/3-col-portfolio.css" rel="stylesheet">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <meta property="og:site_name" content="mindsoap">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="구형 아이팟(Mini · 3세대 · 4세대) 3D 프린팅 케이스 제작기 — mindsoap">
+    <meta property="og:description" content="E-ink 메모장 케이스 테스트에서 시작해 안티그라비티와 Python 파라메트릭 STL로 완성한 아이팟 미니·3세대·4세대 3D 프린팅 케이스 제작기">
+    <meta property="og:url" content="https://mindsoap.net/2026/2026-11-21.html">
+    <meta property="og:image" content="https://mindsoap.net/images/2026-11-21.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <script src="/js/site.js" defer></script>
+</head>
+    <body>
+        <div id="headers"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h1 class="page-header">구형 아이팟(Mini · 3세대 · 4세대) 3D 프린팅 케이스 제작기 <small>2026-11-21</small></h1>
+        </div>
+      </div>
+      <div class="row">
+      <div class="post">
+      <p>
+        <strong>Bambu Lab (0.4mm 노즐, PLA/PETG) + Python 파라메트릭 STL + Antigravity</strong><br>
+        <br>
+        <img src="/images/2026-11-21.jpg" alt="초록색 PLA/PETG 필라멘트로 3D 프린팅한 아이팟 미니, 아이팟 3세대, 아이팟 4세대 케이스"><br>
+        <br>
+        <strong>메모장 케이스 궁리에서 시작된 3D 프린팅 외도</strong><br>
+        얼마 전 만든 <a href="/2026/2026-11-17.html">Pico 2 W E-ink 미니 메모장</a>에 씌울 케이스를 어떻게 만들지 궁리하고 있었다.<br>
+        처음에는 내가 직접 모델링 툴을 만져보려고 했는데, 마침 작업 중이던 안티그라비티(Antigravity)가 자기가 STL을 짜주겠다고 나서길래 시험 삼아 하나 뽑아보았다.<br>
+        그런데 의외로 첫 테스트 출력물부터 치수가 꽤 잘 맞아서 놀랐다. ㅋㅋ<br>
+        <br>
+        <img src="/images/2026-11-21-01.jpg" alt="3D 프린팅한 초록·흰색 접이식 스탠드 케이스에 담긴 Pico 2 W E-ink 미니 메모장"><br>
+        <br>
+        여기서 감을 잡은 김에, 평소 케이스를 구하기 어려워서 그냥 생으로 굴리고 다니던 <strong>구형 아이팟(iPod Mini, iPod 3세대, iPod 4세대)</strong>용 케이스까지 한꺼번에 만들어 보기로 했다.<br>
+        <a href="/2025/2025-12-14.html">밤부 3D 프린터</a>(0.4mm 기본 노즐, PLA/PETG) 환경에서 실물 기기를 옆에 두고 Python으로 파라메트릭 STL을 생성한 뒤, 직접 출력해 끼워 보며 치수를 다듬는 식으로 진행했다. 약간의 시행착오로 미세하게 수정한 부분들 외에는 세 기종 모두 딱 맞는 핏으로 만족스럽게 뽑혀 나왔다.<br>
+        <br>
+        <strong>0. 핵심 노하우: 본체부터 뽑지 말고 '테스트 링'부터!</strong><br>
+        필라멘트(PLA/PETG)와 프린터마다 수축률·공차가 다르기 때문에, 처음부터 1~2시간짜리 본체를 뽑으면 치수 오차로 실패하기 쉽다.<br>
+        그래서 <strong>4.5~6mm 높이의 얇은 단면 테스트 링(바깥에 돌기 개수로 번호 표시)</strong>을 여러 치수로 한 판에 10분 만에 뽑아 실물에 먼저 끼워 본 뒤, 가장 잘 맞는 단면을 기준으로 본체를 생성하는 방식으로 진행했다.<br>
+        <br>
+        <strong>1. iPod Mini (1·2세대 공용) — 2피스 슬라이딩 슬리브 케이스</strong><br>
+        <br>
+        <strong>설계 구조</strong><br>
+        - TPU와 달리 PLA/PETG는 늘어나지 않으므로, <strong>하단 본체 + 상단 캡</strong>을 위아래로 결합하는 2피스 구조로 설계했다.<br>
+        - 측면 그립 곡면이 매끈하게 나오도록 <strong>세워서 출력</strong>하며, 상단 캡은 45° 경사로 설계해 서포트 없이 출력되도록 했다.<br>
+        - <strong>밤부 스튜디오(Bambu Studio) 출력 팁</strong>:<br>
+        &nbsp;&nbsp;· <code>Wall loops: 4</code>, 바닥 흔들림 방지를 위해 <code>Outer brim</code> 사용<br>
+        &nbsp;&nbsp;· 하단 본체의 원형 클릭휠 상단 아치는 <code>Tree(auto)</code> 서포트를 켜고, <code>On build plate only</code> 체크 해제 + <code>Threshold angle 35~40°</code>로 설정해야 구멍 안쪽까지 서포트가 제대로 생성된다.<br>
+        <br>
+        <strong>시행착오 및 치수 튜닝</strong><br>
+        1. <strong>두께 공차 잡기</strong>: 웹 스펙(두께 12.7mm) 기준으로 만든 첫 링(<code>51.4 × 13.3mm</code>)이 아예 들어가지 않았다. 확인해 보니 실물 두께가 약 <code>13.7mm</code>(0.54인치)에 가까웠다.<br>
+        2. <strong>테스트 링 4종 비교</strong>: 직선형/타원형 등 4개 링을 출력해 보니 2번(<code>51.8 × 14.2mm</code> 직선 스타디움형)이 딱 맞았다.<br>
+        3. <strong>긴 본체 마찰 보정</strong>: 2번 치수로 본체 전체를 뽑아 기기를 넣었더니 85mm 깊이 마찰 때문에 너무 꽉 껴서 빠지지 않았다. 내경을 <strong><code>52.00 × 14.40mm</code></strong>로 0.2mm 키워 탈착 가능하게 조정했다.<br>
+        4. <strong>버튼/창 위치 보정</strong>: 실물 측정값을 반영해 클릭휠(하단 약 1cm 시작, <code>Ø 38.2mm</code>)과 화면 창(하단 약 6cm 시작)을 위로 1mm씩 올려 정확히 맞췄다.<br>
+        5. <strong>상단 캡 마무리</strong>:<br>
+        &nbsp;&nbsp;· 내부 깊이 <code>+1.0mm</code> 확보 (총 상하 여유 2.0mm)<br>
+        &nbsp;&nbsp;· Hold 스위치와 3.5mm 이어폰 잭을 편하게 쓰기 위해 상단 구멍 좌우 폭을 <code>36.0 → 46.4mm</code>로 확대<br>
+        &nbsp;&nbsp;· 하단 본체 칼라에 헐렁거리지 않고 꽉 물리도록 캡 안쪽 결합 유격을 <code>0.15 → 0.02mm</code>로 조여 완성!<br>
+        <br>
+        <strong>2. iPod 4세대 흑백(20GB) &amp; 3세대(15/20GB) — 앞·뒤 스냅 클램쉘</strong><br>
+        <br>
+        <strong>설계 방식 변경 이유</strong><br>
+        3·4세대는 미니와 달리 화면 위쪽 여백이 좁아 상단 캡 방식으로는 살 두께가 부족할 수 있었다. 그래서 <strong>앞판 + 뒷판 2피스 스냅 클램쉘</strong> 방식으로 방향을 잡았다.<br>
+        - 앞판과 뒷판을 각각 <strong>바닥에 눕혀서 출력</strong>하기 때문에 화면 창, 클릭휠, 3세대의 4버튼 구멍이 깔끔하게 나온다.<br>
+        - 눕혀 출력할 때 모서리 오버행이 생기지 않도록 바깥쪽·안쪽 모서리를 45° 경사로 처리해 <strong>서포트 0개</strong>로 출력할 수 있게 설계했다.<br>
+        - 하단 30핀 독과 상단 홀드·이어폰 단자 부위는 개방하고, 좌우 4곳의 탄성 스냅 클립으로 딸깍 결합되도록 했다.<br>
+        <br>
+        <strong>3·4세대 테스트 링 &amp; 실물 튜닝</strong><br>
+        앞면은 평평하고 뒷면이 둥근 비대칭 테스트 링 4종을 먼저 출력해 본 결과:<br>
+        - <strong>4세대 흑백(20GB)</strong>: 3번 링(<code>62.2 × 16.2mm</code>) 채택<br>
+        - <strong>3세대(15/20GB)</strong>: 4번 링(<code>62.4 × 16.7mm</code>) 채택<br>
+        <br>
+        이후 실제 앞·뒤판을 출력해 보며 세부 치수를 다듬었다.<br>
+        <br>
+        <strong>① iPod 4세대 흑백 (20GB) 수정 내역</strong><br>
+        - 앞판 테스트 후 <strong>내경 높이를 <code>-2.0mm</code> 축소(<code>105.6 → 103.6mm</code>)</strong>하고, 클릭휠(<code>Ø 42.4mm</code>, 중심 <code>32.95mm</code>)과 화면 창(<code>63.0~96.0mm</code>)을 각각 <code>+1.0mm</code>씩 상향.<br>
+        - 뒷판 안쪽 모서리 경사가 너무 깊어 기기가 끝까지 안 들어가던 문제를 앞판과 동일한 완만한 경사(<code>R 3.20mm</code>)로 수정.<br>
+        - 30핀 충전 커넥터가 살짝 걸리는 부분을 해결하기 위해 뒷판 하단 홈을 <strong>뒤쪽으로 <code>2.0mm</code> 더 깊게</strong> 파서 완벽히 해결.<br>
+        <br>
+        <strong>② iPod 3세대 (15/20GB) 수정 내역</strong><br>
+        - 앞판 테스트 후 <strong>내경 폭 <code>-0.5mm</code> (<code>62.4 → 61.9mm</code>)</strong>, <strong>높이 <code>-1.5mm</code> (<code>104.6 → 103.1mm</code>)</strong> 조정.<br>
+        - 터치휠은 바닥 기준 <code>+1.0mm</code> 올리고 지름은 <code>-1.0mm</code> 줄여(<code>Ø 39.3mm</code>, 중심 <code>26.5mm</code>) 정렬.<br>
+        - 4버튼 슬롯(<code>49.1~58.1mm</code>)과 화면 창(<code>63.0~95.5mm</code>, <code>+1.0mm</code> 상향), 뒷판 완만 경사 및 하단 커넥터 여유 공간까지 동일하게 반영.<br>
+        <br>
+        <strong>3. 출력 후기</strong><br>
+        인터넷에 돌아다니는 스펙 표기만 믿고 바로 출력했으면 치수 오차 때문에 몇 번씩 버릴 뻔했는데, <strong>단면 테스트 링 → 실물 대조 → 0.5~1mm 단위 미세 수정</strong> 순서로 가니 세 기종 모두 딱 맞게 완성되었다.<br>
+        이제 구형 아이팟들도 기스 걱정 없이 들고 다닐 수 있어서 아주 만족스럽다!<br>
+      </p>
+      </div>
+      </div>
+      <div class="row text-center year-nav-row">
+        <div id="footers"></div>
+      </div>
+    </div>
+    <div class="container">
+      <hr>
+      <footer>
+        <div class="row">
+          <div class="col-lg-12">
+            <p>Copyright &copy; mindsoap.net  <span id="getCurrentDate"></span></p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script>
+      document.getElementById("getCurrentDate").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
